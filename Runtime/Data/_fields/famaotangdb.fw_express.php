@@ -1,0 +1,1 @@
+a:6:{i:0;s:6:"exp_id";i:1;s:8:"exp_name";i:2;s:8:"exp_code";i:3;s:11:"exp_addtime";s:3:"_pk";s:6:"exp_id";s:5:"_type";a:4:{s:6:"exp_id";s:7:"int(11)";s:8:"exp_name";s:11:"varchar(32)";s:8:"exp_code";s:11:"varchar(32)";s:11:"exp_addtime";s:7:"int(11)";}}

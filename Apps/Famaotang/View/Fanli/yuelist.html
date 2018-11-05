@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<link rel="shortcut icon" href="__PUBLIC__/<{:C('RESOURCE_ROOT_NAME')}>/static/icon_min.png">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no,email=no,adress=no">
+		<title>余额明细</title>
+		<include file="Com/head" />
+		<style type="text/css">
+			.icon_lists {
+				width: 100% !important;
+			}
+			
+			.icon_lists li {
+				float: left;
+				width: 20%;
+				height: 180px;
+				text-align: center;
+				list-style: none !important;
+			}
+			
+			.icon_lists li img {
+				width: 2rem;
+				margin: 0.3rem;
+			}
+			
+			.icon_lists li a {
+				text-decoration: none;
+			}
+			
+			.icon_lists .iconfont {
+				font-size: 25px;
+				line-height: 30px;
+				margin: 10px 0;
+				color: #7e7e7e;
+				-webkit-transition: font-size 0.25s ease-out 0s;
+				-moz-transition: font-size 0.25s ease-out 0s;
+				transition: font-size 0.25s ease-out 0s;
+			}
+			
+			.icon_lists .iconfont.active,
+			.icon_lists .iconfont:active {
+				font-size: 25px;
+				color: #f08519;
+			}
+			
+			.icon_lists .name {
+				font-size: 12px;
+			}
+			
+			.bar-tab .tab-item.active,
+			.bar-tab .tab-item:active {
+				color: #f08519;
+			}
+			
+			.buttons-tab {
+				margin: 0;
+				background: #fff;
+				position: relative;
+			}
+			
+			.buttons-tab .button {
+				font-size: .6rem;
+			}
+			
+			.buttons-tab .button.active,
+			.buttons-tab .button:active {
+				font-size: .6rem;
+				color: #f08519;
+				border-color: #f08519;
+			}
+			
+			.content-block {
+				margin: 0rem 0;
+				padding: 0rem;
+				color: #6d6d72;
+			}
+			
+			.badge {
+				display: inline-block;
+				padding: 0.1rem 0.25rem 0.1rem 0.25rem;
+				font-size: .1rem;
+				line-height: .6rem;
+				color: #fff;
+				background-color: rgba(0, 0, 0, .15);
+				border-radius: 5rem;
+			}
+			
+			.modal-button {
+				font-size: .5rem;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart="" style="background-color:#FAFAFA">
+		<div class="page">
+			<header class="bar bar-nav" style="background-color:#006db2;">
+				<a href="<{:U('./'.C('MODULE_NAME').'/Fanli/capital')}>" class="icon icon-left pull-left" style="color:#fff"></a>
+
+				<h1 class="title" style="color:#fff">余额明细</h1>
+			</header>
+			<div class="content">
+				
+				<div class="content-block" style="min-height: 10rem; margin:0;">
+					<div class="buttons-tab">
+						<a href="#" id="yueyx" class="tab-link  button <if condition="$state eq 1 ">active</if> ">有效</a>
+						<a href="#" id="yuedj" class="tab-link button <if condition="$state eq 2 ">active</if>">冻结</a>
+						<a href="#" id="yuewx" class="tab-link button <if condition="$state eq 0 ">active</if>">无效</a>
+					</div>
+					<div class="content-block">
+						<div class="tabs" style="background: #FFF">
+							<div id="tab2_1" class="tab active">
+								<div class="content-block">
+									<div class="list-block media-list" style="margin-top:0rem;">
+										<ul>
+											<foreach name='list' item='item' key='key'>
+												<li>
+													<div class="order-list all_odlist" style="border-bottom:.2rem solid #EFEFF4;">
+														<div class="order-number">
+															<span><{$item.bl_moneystr}>元 <span style="font-size:0.8em"><{$item.bl_addtime|date='Y-m-d h:i:s',###}></span></span>
+															<span style="color: #f08519"><{$item.bl_statestr}></span>
+														</div>
+														<div class="order-number">
+														    <p><{$item.bl_remark}></p>
+														</div>
+														
+														<div class="order-bottom">
+															<div class="order-button-type">
+																<a href="#" class="button button-warning button-round order-button" id="all_oddetail">详情</a>
+															</div>
+														</div>
+													</div>
+												</li>
+											</foreach>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="kl-page" style="margin:.5rem">
+						<if condition="$page neq ''">
+							<{$page}>
+						</if>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<include file="Com/sj" />
+	<script type="text/javascript">
+		$.init();
+		$(function() {
+
+			var odArray = <{:json_encode($list)}>||[];
+			if($.isArray(odArray)&&odArray.length>0){
+				odArray.forEach(function(val,index) {
+					var odObject=odArray[index];
+				});
+			}
+
+			$('.order-list.all_odlist').each(function(index) {
+				// console.log('li %d is:%o',index,this);
+				if ($.isArray(odArray)&&odArray.length>index)
+				{
+					var odObject=odArray[index];
+					$(this).find("#all_oddetail").click(function(){
+						if($.isPlainObject(odObject))
+						{
+							window.location.href="<{:U('./'.C('MODULE_NAME').'/Fanli/yuedetail/bl_id')}>/"+odObject['bl_id']+"/state/<{$state}>";
+						}
+					});
+				}
+			});
+
+
+			$('#yueyx').click(function(){
+				window.location.href= "<{:U('./'.C('MODULE_NAME').'/Fanli/yuelist?state=1')}>";
+			});
+			
+			$('#yuedj').click(function(){
+				window.location.href= "<{:U('./'.C('MODULE_NAME').'/Fanli/yuelist?state=2')}>";
+			});
+			
+			$('#yuewx').click(function(){
+				window.location.href= "<{:U('./'.C('MODULE_NAME').'/Fanli/yuelist?state=0')}>";
+			});
+			
+
+
+
+	});
+	</script>
+
+</html>
