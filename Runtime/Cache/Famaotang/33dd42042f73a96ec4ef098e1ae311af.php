@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>发茂堂</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/weui.min.css" />
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 
@@ -211,7 +211,7 @@
 					</li>
 					<li>
 						<a class="tab-item" id="fw_search" href="#">
-							<img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
+							<img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
 						</a>
 					</li>
 					<li>
@@ -232,13 +232,13 @@
 				<!-- Slider -->
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						<?php if($adlist|count > 0): if(is_array($adlist)): foreach($adlist as $key=>$item): if($item["ad_url"] == '' ): ?><div class="swiper-slide"><img style="width:100%;height:100%" src="/famaotang/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>" alt=""></div>
+						<?php if($adlist|count > 0): if(is_array($adlist)): foreach($adlist as $key=>$item): if($item["ad_url"] == '' ): ?><div class="swiper-slide"><img style="width:100%;height:100%" src="/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>" alt=""></div>
 								<?php else: ?>
 								<a href="<?php echo ($item["ad_url"]); ?>">
-									<div class="swiper-slide"><img style="width:100%;height:100%" src="/famaotang/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>" alt=""></div>
+									<div class="swiper-slide"><img style="width:100%;height:100%" src="/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>" alt=""></div>
 								</a><?php endif; endforeach; endif; ?>
 						<?php else: ?>
-							<div class="swiper-slide"><img style="width:100%;height:100%" src="/famaotang/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>"  onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/default_pic.jpg'" alt=""></div><?php endif; ?>
+							<div class="swiper-slide"><img style="width:100%;height:100%" src="/Public/uploads/mobi/<?php echo ($item["ad_pic"]); ?>"  onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/default_pic.jpg'" alt=""></div><?php endif; ?>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
@@ -317,7 +317,7 @@
 					<ul>
 						<li>
 							<div class="item-content1">
-								<div class="item-media1"><img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/send_show.png" style="width:2.5rem;height:2.5rem;"></div>
+								<div class="item-media1"><img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/send_show.png" style="width:2.5rem;height:2.5rem;"></div>
 								<div class="item-inner">
 									<div class="item-subtitle"><?php echo ($item["news_title"]); ?></div>
 									<div class="item-title-row">
@@ -328,7 +328,7 @@
 										<span style="color:#c1c1c1;font-size:0.5rem;"><?php echo (date('Y-m-d',$item["news_addtime"])); ?></span>
 									</div>
 								</div>
-								<div class="item-media2"><img src="<?php echo ($item["news_pic_str"]); ?>" style='width:4rem;height:3rem' onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
+								<div class="item-media2"><img src="<?php echo ($item["news_pic_str"]); ?>" style='width:4rem;height:3rem' onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
 							</div>
 						</li>
 					</ul>
@@ -366,7 +366,7 @@
 															<span style="color: #f08519"><?php echo ($item["od_state_str"]); ?></span>
 														</div>
 														<?php if(is_array($item['orderdetail'])): foreach($item['orderdetail'] as $key2=>$item2): ?><div class="order-content" style="padding-bottom: 0.5rem">
-																<div class="item-media"><img src="/famaotang/Public/uploads/mobi/<?php echo ($item2["oddt_propic"]); ?>" style="width:3.5rem;" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
+																<div class="item-media"><img src="/Public/uploads/mobi/<?php echo ($item2["oddt_propic"]); ?>" style="width:3.5rem;" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
 																<div class="order-inner">
 																	<div class="item-subtitle" style="font-size: 0.5rem">
 																		<?php echo ($item2["oddt_proname"]); ?>
@@ -418,7 +418,7 @@
 									<ul>
 										<?php if(is_array($dllist)): foreach($dllist as $key=>$item): ?><li>
 												<a href="<?php echo U('./'.C('MODULE_NAME').'/Dealer/applylist/ls_status/0');?>" class="item-link item-content">
-													<div class="item-media"><img class="kl-circle kl-img-thumbnail" src="/famaotang/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:2rem; border-radius: 50%;" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'"></div>
+													<div class="item-media"><img class="kl-circle kl-img-thumbnail" src="/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:2rem; border-radius: 50%;" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'"></div>
 													<div class="item-inner">
 														<div class="item-subtitle between-horizontally">
 															<span style="color:#7e7e7e"><h1><?php echo ($item["dl_name"]); ?></h1></span><span style="color:#c1c1c1"><?php echo (date('Y-m-d',$item["dl_addtime"])); ?></span></div>
@@ -435,14 +435,14 @@
 			</div>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
-	<script type='text/javascript' src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js' charset='utf-8'></script>
-	<script type='text/javascript' src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/echarts.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/echarts.min.js' charset='utf-8'></script>
 	<script type="text/javascript">
 		$.init();
 		$(function() {

@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登录</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
 <script type="text/javascript" language="javascript">
         $(document).ready(function() {
             $("#verifyImg").click(function(){
@@ -18,9 +18,9 @@
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>

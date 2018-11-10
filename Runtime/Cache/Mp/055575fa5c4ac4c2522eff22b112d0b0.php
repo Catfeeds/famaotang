@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>产品管理</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
@@ -22,7 +22,7 @@
 <div class="leftmenu">
 <div class="menu_list">
 <div class="menu_top">
-<div  style="line-height:51px; height:51px;"><img src="/famaotang/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
+<div  style="line-height:51px; height:51px;"><img src="/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
 </div>  
 <?php if(($qypurview["10000"]) == "10000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu01"  onClick="nemuclose('#zi01',this)" >基本资料</ul>
@@ -116,7 +116,6 @@
 	<ul class="menu_sontitle" id="fu04" onClick="nemuclose('#zi04',this)" >前台设置</ul>
 	<ul class="menu_son" id="zi04" >
 	<?php if(($qypurview["70011"]) == "70011"): ?><li><A href="<?php echo U('Mp/Jfmobi/basic/action/profile');?>" class="<?php echo ($curr =='jfmo_profile' ?'curr':''); ?>" >公司简介</A></li><?php endif; ?>
-	<?php if(($qypurview["70006"]) == "70006"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=10');?>" class="<?php echo ($curr =='jfmo_xuzhi' ?'curr':''); ?>" >代理须知</A></li><?php endif; ?>
 	<?php if(($qypurview["70011"]) == "70011"): ?><li><A href="<?php echo U('Mp/Jfmobi/basic/action/zhengce');?>" class="<?php echo ($curr =='jfmo_zhengce' ?'curr':''); ?>" >代理政策</A></li><?php endif; ?>
 	<?php if(($qypurview["70011"]) == "70011"): ?><li><A href="<?php echo U('Mp/Jfmobi/basic/action/help');?>" class="<?php echo ($curr =='jfmo_wenda' ?'curr':''); ?>" >产品问答</A></li><?php endif; ?>
 	<?php if(($qypurview["70017"]) == "70017"): ?><li><A href="<?php echo U('Mp/Jfmobi/setlogo');?>" class="<?php echo ($curr =='jfmo_logo' ?'curr':''); ?>" >Logo设置</A></li><?php endif; ?>
@@ -128,7 +127,7 @@
 	<?php if(($qypurview["70023"]) == "70023"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=6');?>" class="<?php echo ($curr =='jfmo_peixun' ?'curr':''); ?>" >培训机构</A></li><?php endif; ?>
 	<?php if(($qypurview["70013"]) == "70013"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=2');?>" class="<?php echo ($curr =='jfmo_buyer' ?'curr':''); ?>" >买家秀</A></li><?php endif; ?>
 	<?php if(($qypurview["70021"]) == "70021"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=7');?>" class="<?php echo ($curr =='jfmo_huodong' ?'curr':''); ?>" >线下活动</A></li><?php endif; ?>		
-	<?php if(($qypurview["70006"]) == "70006"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=9');?>" class="<?php echo ($curr =='jfmo_jingjin' ?'curr':''); ?>" >每日精进</A></li><?php endif; ?>	
+	<?php if(($qypurview["70006"]) == "70006"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=9');?>" class="<?php echo ($curr =='jfmo_jingjin' ?'curr':''); ?>" >知识库</A></li><?php endif; ?>	
 	
 	<?php if(($qypurview["70005"]) == "70005"): ?><li><A href="<?php echo U('Mp/Jfmobi/product');?>" class="<?php echo ($curr =='jfmo_pro' ?'curr':''); ?>">产品展示</A></li><?php endif; ?>
 	<?php if(($qypurview["70007"]) == "70007"): ?><li><A href="<?php echo U('Mp/Jfmobi/piclist');?>" class="<?php echo ($curr =='jfmo_pics' ?'curr':''); ?>">图片管理</A></li><?php endif; ?>	

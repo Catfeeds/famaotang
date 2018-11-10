@@ -15,7 +15,7 @@
 if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 //物理根路径
 define('BASE_PATH', dirname(__FILE__)) . DIRECTORY_SEPARATOR;
-define('WWW_WEBROOT','/famaotang/'); //该站点所在的目录 相对网站的根目录
+define('WWW_WEBROOT','/'); //该站点所在的目录 相对网站的根目录
 define('WWW_WEBHOST',strtolower(htmlspecialchars('http://'.$_SERVER['HTTP_HOST']))); //当前访问域名
 
 

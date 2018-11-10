@@ -3,16 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>子用户管理</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
@@ -22,7 +22,7 @@
 <div class="leftmenu">
 <div class="menu_list">
 <div class="menu_top">
-<div  style="line-height:51px; height:51px;"><img src="/famaotang/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
+<div  style="line-height:51px; height:51px;"><img src="/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
 </div>  
 <?php if(($qypurview["10000"]) == "10000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu01"  onClick="nemuclose('#zi01',this)" >基本资料</ul>
@@ -185,7 +185,7 @@ function nemuclose(z,obj){
 <td class="data" ><span><?php echo ($qyuser); ?>:<?php echo ($vo["su_username"]); ?></span></td>
 <td class="data" ><span><?php echo ($vo["su_name"]); ?></span></td>
 <td class="data" ><span><?php if($vo["su_logintime"] != '0' ): echo (date('Y-m-d H:i:s',$vo["su_logintime"])); endif; ?></span></td>
-<td class="data" ><span><a href="<?php echo U('Mp/Subuser/suactive?su_id='.$vo['su_id'].'&su_status='.$vo['su_status'].'');?>" ><img src="/famaotang/Public/mp/static/<?php echo ($vo['su_status'] == 0?'no':'yes'); ?>.gif" /></a></span></td>
+<td class="data" ><span><a href="<?php echo U('Mp/Subuser/suactive?su_id='.$vo['su_id'].'&su_status='.$vo['su_status'].'');?>" ><img src="/Public/mp/static/<?php echo ($vo['su_status'] == 0?'no':'yes'); ?>.gif" /></a></span></td>
 <td class="data" ><span><a href="<?php echo U('Mp/Subuser/subuseredit?su_id='.$vo['su_id'].'');?>">修改</a>　<a  href="#" onClick="javascript:var truthBeTold = window.confirm('该操作将彻底删除,谨慎操作!'); if (truthBeTold) window.location.href='<?php echo U('Mp/Subuser/sudelete?su_id='.$vo['su_id'].'');?>';" >删除</a></span></td>
 </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 </tbody>

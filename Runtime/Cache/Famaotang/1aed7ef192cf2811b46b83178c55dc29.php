@@ -4,15 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>我</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -116,7 +116,7 @@
 					</li>
 					<li>
 						<a class="create-prompt" id="fw_search" href="#">
-							<img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
+							<img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
 						</a>
 					</li>
 					<li>
@@ -136,10 +136,10 @@
 			<div class="content">
 				<!-- minetop -->
 				<div class="top-img" style="height:7rem;">
-					<img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/mine_top.jpg" style="width:100%;height:7rem;">
+					<img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/mine_top.jpg" style="width:100%;height:7rem;">
 					<div class="mine-top">
 						<div class="head-icon">
-							<img class="kl-circle kl-img-thumbnail" src="/famaotang/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:3rem;height:3rem;border-radius: 50%;margin-top:.3rem;" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'">
+							<img class="kl-circle kl-img-thumbnail" src="/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:3rem;height:3rem;border-radius: 50%;margin-top:.3rem;" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'">
 							<span style="line-height:1rem;font-size:0.5rem;color: #fff"><?php echo ($userinfo["dl_name"]); ?></span>
 							<div style="line-height:.5rem;padding: .3rem"><i class="iconfont icon-diamond" style="font-size:.5rem; color: #fff;"></i><span style="font-size:.75rem;color: #fff;padding: .2rem"><?php echo ($userinfo["dl_level_name"]); ?></span></div>
 						</div>
@@ -300,10 +300,10 @@
 			</div>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
 	<script type="text/javascript">

@@ -423,161 +423,143 @@ class ShipmentController extends CommController {
 			if($ship_barcode==''){
 				$this->error('请扫描或填写条码','',2);
 			}
-			if(!preg_match("/^[a-zA-Z0-9]{4,30}$/",$ship_barcode)){
-				$this->error('条码由数字字母组成','',2);
-			}
+//			if(!preg_match("/^[a-zA-Z0-9]{4,30}$/",$ship_barcode)){
+//				$this->error('条码由数字字母组成','',2);
+//			}
+
+            $ship_barcode=str_replace("，",",",$ship_barcode);
+            $ship_barcode=str_replace(".",",",$ship_barcode);
+            $ship_barcode=str_replace("。",",",$ship_barcode);
+            $linearr=explode(",",$ship_barcode);
+            foreach($linearr as $key =>$li) {
+                $ship_barcode = trim($li);
+                if ($ship_barcode == '') {
+                    continue;
+                }
+                $msgs[$key]['barcode'] = $ship_barcode;
+                //检测该条码是否已存在
+                $map['ship_unitcode'] = session('unitcode');
+                $map['ship_barcode'] = $ship_barcode;
+                $map['ship_deliver'] = 0;
+                $Shipment = M('Shipment');
+                $data = $Shipment->where($map)->find();
+                if (is_not_null($data)) {
+                    $this->error('该码已存在', '', 2);
+                }
+
+                //检测是否已发行
+                $barcode = wlcode_to_packinfo($ship_barcode, session('unitcode'));
+
+                if (!is_not_null($barcode)) {
+                    $this->error('条码还没发行', '', 2);
+                }
+
+                //是否出货
+                $map = array();
+                $where = array();
+                if ($barcode['code'] != '') {
+                    $where[] = array('EQ', $barcode['code']);
+                }
+                if ($barcode['tcode'] != '' && $barcode['tcode'] != $barcode['code']) {
+                    $where[] = array('EQ', $barcode['tcode']);
+                }
+                if ($barcode['ucode'] != '' && $barcode['ucode'] != $barcode['code'] && $barcode['ucode'] != $barcode['tcode']) {
+                    $where[] = array('EQ', $barcode['ucode']);
+                }
+                $where[] = 'or';
+                $map['ship_barcode'] = $where;
+                $map['ship_unitcode'] = session('unitcode');
+                $map['ship_deliver'] = 0;
+                $data = $Shipment->where($map)->find();
+                if (is_not_null($data)) {
+                    $this->error('该码已存在', '', 2);
+                }
+
+                //检测是否拆箱
+                $map2['chai_unitcode'] = session('unitcode');
+                $map2['chai_barcode'] = $ship_barcode;
+                $map2['chai_deliver'] = 0;
+                $Chaibox = M('Chaibox');
+                $data2 = $Chaibox->where($map2)->find();
+
+                if (is_not_null($data2)) {
+                    $this->error('该码已经拆箱，不能再使用', '', 2);
+                }
+
+                $ship_proqty = $barcode['qty'];
 
 
-			//检测该条码是否已存在
-			$map['ship_unitcode']=session('unitcode');
-			$map['ship_barcode'] = $ship_barcode;
-			$map['ship_deliver']=0;
-			$Shipment= M('Shipment');
-			$data=$Shipment->where($map)->find();
-			if(is_not_null($data)){
-				$this->error('该码已存在','',2);
-			}
+                //入库 记录拆箱 tcode-大    ucode-中
+                $insert['ship_unitcode'] = session('unitcode');
+                $insert['ship_number'] = $ship_number;
+                $insert['ship_deliver'] = 0;
+                $insert['ship_dealer'] = $ship_dealer;
+                $insert['ship_pro'] = $ship_pro;
+                $insert['ship_whid'] = $ship_whid;
+                $insert['ship_proqty'] = $ship_proqty;
+                $insert['ship_barcode'] = $ship_barcode;
+                $insert['ship_date'] = $ship_date;
+                $insert['ship_ucode'] = $barcode['ucode'];
+                $insert['ship_tcode'] = $barcode['tcode'];
+                $insert['ship_remark'] = $ship_remark;
+                $insert['ship_cztype'] = 0;//操作类型 0-企业主账户  1-企业子管理用户  2-经销商
+                $insert['ship_czid'] = session('qyid');
+                $insert['ship_czuser'] = session('qyuser');
 
-			//检测是否已发行
-			$barcode=wlcode_to_packinfo($ship_barcode,session('unitcode'));
-			
-			if(!is_not_null($barcode)){
-				$this->error('条码还没发行','',2);
-			}
+                $rs = $Shipment->create($insert, 1);
+                if ($rs) {
+                    $result = $Shipment->add();
+                    if ($result) {
+                        //记录拆箱
+                        if ($barcode['tcode'] != '' && $barcode['tcode'] != $barcode['code']) {
 
-			//是否出货
-			$map=array();
-			$where=array();
-			if($barcode['code']!=''){
-				$where[]=array('EQ',$barcode['code']);
-			}
-			if($barcode['tcode']!='' && $barcode['tcode']!=$barcode['code']){
-				$where[]=array('EQ',$barcode['tcode']);
-			}
-			if($barcode['ucode']!='' && $barcode['ucode']!=$barcode['code'] && $barcode['ucode']!=$barcode['tcode']){
-				$where[]=array('EQ',$barcode['ucode']);
-			}
-			$where[]='or';
-			$map['ship_barcode'] = $where;
-			$map['ship_unitcode']=session('unitcode');
-			$map['ship_deliver']=0;
-			$data=$Shipment->where($map)->find();
-			if(is_not_null($data)){
-				$this->error('该码已存在','',2);
-			}
+                            $insert2['chai_unitcode'] = session('unitcode');
+                            $insert2['chai_barcode'] = $barcode['tcode'];
+                            $insert2['chai_deliver'] = 0;
+                            $data3 = $Chaibox->where($insert2)->find();
+                            if (!$data3) {
+                                $insert2['chai_addtime'] = $ship_time;
+                                $Chaibox->create($insert2, 1);
+                                $Chaibox->add();
 
+                            }
+                        }
+                        if ($barcode['ucode'] != '' && $barcode['ucode'] != $barcode['code'] && $barcode['ucode'] != $barcode['tcode']) {
 
-			// if ($Haspurview){
-            //是否已入库
-       	 	$map=array();
-        	$where=array();
-		
-			if($barcode['code']!=''){
-				$where[]=array('EQ',$barcode['code']);
-			}
-			if($barcode['tcode']!='' && $barcode['ucode']!=$barcode['tcode']){
-				$where[]=array('EQ',$barcode['tcode']);
-			}
-			if($barcode['ucode']!='' &&  $barcode['ucode']!=$barcode['tcode']){
-				$where[]=array('EQ',$barcode['ucode']);
-			}
-			if($barcode['ucode']!='' &&  $barcode['ucode']==$barcode['tcode']){
-				$where[]=array('EQ',$barcode['ucode']);
-			}
-		
-        	$where[]='or';
-			$map['stor_unitcode']=$this->qycode;
-			$map['stor_barcode'] = $where;
-			$data=$Storage->where($map)->find();
-        	if(!is_not_null($data)){
-        		$this->error('该码产品还没入库','',2);
-        	}
-         // }
+                            $insert3['chai_unitcode'] = session('unitcode');
+                            $insert3['chai_barcode'] = $barcode['ucode'];
+                            $insert3['chai_deliver'] = 0;
+                            $data4 = $Chaibox->where($insert3)->find();
+                            if (!$data4) {
+                                $insert3['chai_addtime'] = $ship_time;
+                                $Chaibox->create($insert3, 1);
+                                $Chaibox->add();
 
-			//检测是否拆箱
-			$map2['chai_unitcode']=session('unitcode');
-			$map2['chai_barcode'] = $ship_barcode;
-			$map2['chai_deliver'] = 0;
-			$Chaibox= M('Chaibox');
-			$data2=$Chaibox->where($map2)->find();
+                            }
+                        }
 
-			if(is_not_null($data2)){
-				$this->error('该码已经拆箱，不能再使用','',2);
-			}
-
-			$ship_proqty=$barcode['qty'];
-
-
-			//入库 记录拆箱 tcode-大    ucode-中 
-			$insert['ship_unitcode']=session('unitcode');
-			$insert['ship_number']=$ship_number;
-			$insert['ship_deliver']=0;
-			$insert['ship_dealer']=$ship_dealer;
-			$insert['ship_pro']=$ship_pro;
-			$insert['ship_whid']=$ship_whid;
-			$insert['ship_proqty']=$ship_proqty;
-			$insert['ship_barcode']=$ship_barcode;
-			$insert['ship_date']=$ship_date;
-			$insert['ship_ucode']=$barcode['ucode'];
-			$insert['ship_tcode']=$barcode['tcode'];
-			$insert['ship_remark']=$ship_remark;
-			$insert['ship_cztype']=0;//操作类型 0-企业主账户  1-企业子管理用户  2-经销商
-			$insert['ship_czid']=session('qyid');
-			$insert['ship_czuser']=session('qyuser');
-
-			$rs=$Shipment->create($insert,1);
-			if($rs){
-			   $result = $Shipment->add(); 
-			   if($result){
-					//记录拆箱
-					if($barcode['tcode']!='' && $barcode['tcode']!=$barcode['code']){
-
-						$insert2['chai_unitcode']=session('unitcode');
-						$insert2['chai_barcode']=$barcode['tcode'];
-						$insert2['chai_deliver']=0;
-						$data3=$Chaibox->where($insert2)->find();
-						if(!$data3){
-							$insert2['chai_addtime']=$ship_time;
-							$Chaibox->create($insert2,1);
-							$Chaibox->add(); 
-
-						}
-					}
-					if($barcode['ucode']!='' && $barcode['ucode']!=$barcode['code'] && $barcode['ucode']!=$barcode['tcode']){
-
-						$insert3['chai_unitcode']=session('unitcode');
-						$insert3['chai_barcode']=$barcode['ucode'];
-						$insert3['chai_deliver']=0;
-						$data4=$Chaibox->where($insert3)->find();
-						if(!$data4){
-							$insert3['chai_addtime']=$ship_time;
-							$Chaibox->create($insert3,1);
-							$Chaibox->add(); 
-
-						}
-					}
-
-					//记录日志 begin
-					$log_arr=array(
-								'log_qyid'=>session('qyid'),
-								'log_user'=>session('qyuser'),
-								'log_qycode'=>session('unitcode'),
-								'log_action'=>'出货扫描',
-								'log_type'=>1, //0-系统 1-企业 2-经销商 3-消费者
-								'log_addtime'=>time(),
-								'log_ip'=>real_ip(),
-								'log_link'=>__SELF__,
-								'log_remark'=>json_encode($insert)
-								);
-					save_log($log_arr);
-					//记录日志 end
-				   $this->success('添加成功',U('Mp/Shipment/add'),1);
-			   }else{
-				   $this->error('添加失败','',2);
-			   }
-			}else{
-				$this->error('添加失败','',2);
-			}
+                        //记录日志 begin
+                        $log_arr = array(
+                            'log_qyid' => session('qyid'),
+                            'log_user' => session('qyuser'),
+                            'log_qycode' => session('unitcode'),
+                            'log_action' => '出货扫描',
+                            'log_type' => 1, //0-系统 1-企业 2-经销商 3-消费者
+                            'log_addtime' => time(),
+                            'log_ip' => real_ip(),
+                            'log_link' => __SELF__,
+                            'log_remark' => json_encode($insert)
+                        );
+                        save_log($log_arr);
+                        //记录日志 end
+                    } else {
+                        $this->error('添加失败', '', 2);
+                    }
+                } else {
+                    $this->error('添加失败', '', 2);
+                }
+            }
+            $this->success('添加成功', U('Mp/Shipment/add'), 1);
 		}
 
     }
@@ -745,34 +727,6 @@ class ShipmentController extends CommController {
                     $msgs[$key]['error']='<span style="color:#FF0000">添加条码 '.$ship_barcode.' 出错，该条码已存在。</span>';
                     continue;
                 }
-
-                // if ($Haspurview){
-            		//是否具有入库权限，验证产品条码是否已经入库
-       	 			$map3=array();
-        			$where3=array();
-					$data3=array();
-					if($barcode['code']!=''){
-						$where3[]=array('EQ',$barcode['code']);
-					}
-					if($barcode['tcode']!='' && $barcode['ucode']!=$barcode['tcode']){
-						$where3[]=array('EQ',$barcode['tcode']);
-					}
-					if($barcode['ucode']!='' &&  $barcode['ucode']!=$barcode['tcode']){
-						$where3[]=array('EQ',$barcode['ucode']);
-					}
-					if($barcode['ucode']!='' &&  $barcode['ucode']==$barcode['tcode']){
-						$where3[]=array('EQ',$barcode['ucode']);
-					}
-					$Storage=M('Storage');
-        			$where3[]='or';
-					$map3['stor_unitcode']=$this->qycode;
-					$map3['stor_barcode'] =$where3;
-           			$data3=$Stroage->where($map3)->find();
-            		if(!is_not_null($data2)){
-            			$msgs[$key]['error']='<span style="color:#FF0000">添加条码 '.$ship_barcode.' 出错，该条码产品还没入库。</span>';
-						continue;
-            		}
-           		// }
 
                 //检测是否拆箱
                 $map2=array();
@@ -1027,10 +981,11 @@ class ShipmentController extends CommController {
 	       @mkdir(BASE_PATH.'/Public/uploads/product/'.session('unitcode').'/');
 	    }
 
-        $http_host=strtolower(htmlspecialchars('http://'.$_SERVER['HTTP_HOST'])).WWW_WEBROOT;
-		
-		$link=$http_host.'mp/wxship/index/qycode/'.session('unitcode').'/ttamp/'.$timestamp.'/sture/'.$signature;
-
+		if(session('unitcode')>2831){
+			$link='http://www.cn315fw.com/wxship/index/index/qycode/'.session('unitcode').'/ttamp/'.$timestamp.'/sture/'.$signature;
+		}else{
+		    $link='http://www.cn315fw.com/cp/wxship/index/qycode/'.session('unitcode').'/ttamp/'.$timestamp.'/sture/'.$signature;
+		}
 		
 		
 		make_ercode($link,$filepath,'','');

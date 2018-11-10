@@ -4,15 +4,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-        <link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+        <link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="format-detection" content="telephone=no,email=no,adress=no">
         <title>我的返利</title>
-        <link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+        <link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
         <style type="text/css">
@@ -142,7 +142,7 @@
                 <div class="top-img" style="height:8rem;">
                     <div class="fanli-top">
                         <div class="fanli-flex">
-                            <img class="kl-circle" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_top_icon.png" style="position:absolute;width:6rem;height:6rem;border-radius: 50%;top:1rem;left: 50%;margin-left:-3rem" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_top_icon.png'">
+                            <img class="kl-circle" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_top_icon.png" style="position:absolute;width:6rem;height:6rem;border-radius: 50%;top:1rem;left: 50%;margin-left:-3rem" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_top_icon.png'">
                             <div style="width:6rem;position: absolute;top:3.5rem;left:50%;;margin-left:-3rem;text-align: center;">
                                 <span style="line-height:1rem;font-size:0.75rem;color: #fff">返利余额</span>
                                 <div style="line-height:.5rem;padding: .2rem"><span style="font-size:.6rem;color: #fff;padding: .3rem"><?php echo (number_format($balance_total,2,'.','')); ?></span></div>
@@ -182,7 +182,7 @@
                                             </div>
                                         </li>
                                             <?php if($dl_level == 1): ?><li class="item-content item-link btn"  id="salemonthly" >
-                                                    <div class="item-media"><img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_icon.png" style="width: 1rem;height: 1rem;"></div>
+                                                    <div class="item-media"><img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/balance_icon.png" style="width: 1rem;height: 1rem;"></div>
                                                     <div class="item-inner">
                                                         <div class="item-title">
                                                             <h1>按月业绩奖金</h1>
@@ -332,10 +332,10 @@
             </div>
         </div>
     </body>
-     <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+     <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
     <script type="text/javascript">

@@ -109,6 +109,7 @@ class OrdersController extends CommController {
 			$map2['oddt_unitcode']=session('unitcode');
 			$map2['oddt_odid']=$v['od_id'];
 			$data2 = $Orderdetail->where($map2)->order('oddt_id DESC')->limit(100)->select();
+//			dunp($data2);die();
 			foreach($data2 as $kk=>$vv){
 				//产品
 				$map3=array();
@@ -1050,6 +1051,7 @@ class OrdersController extends CommController {
 			$map2['oddt_unitcode']=session('unitcode');
 			$map2['oddt_odid']=$v['od_id'];
 			$data2 = $Orderdetail->where($map2)->order('oddt_id DESC')->limit(100)->select();
+
 			foreach($data2 as $kk=>$vv){
 				//产品
 				$map3=array();
@@ -1066,21 +1068,21 @@ class OrdersController extends CommController {
 				}else{
 					$data2[$kk]['oddt_propic']='';
 				}
-				
+
 				//订购数量
 				$oddt_totalqty=0; //总订购数
 				$oddt_unitsqty=0; //每单位包装的数量
 				if($vv['oddt_prodbiao']>0){
 					$oddt_unitsqty=$vv['oddt_prodbiao'];
-					
+
 					if($vv['oddt_prozbiao']>0){
 						$oddt_unitsqty=$oddt_unitsqty*$vv['oddt_prozbiao'];
 					}
-					
+
 					if($vv['oddt_proxbiao']>0){
 						$oddt_unitsqty=$oddt_unitsqty*$vv['oddt_proxbiao'];
 					}
-					
+
 					$oddt_totalqty=$oddt_unitsqty*$vv['oddt_qty'];
 				}else{
 					$oddt_totalqty=$vv['oddt_qty'];
@@ -1090,7 +1092,7 @@ class OrdersController extends CommController {
 				}else{
 					$data2[$kk]['oddt_totalqty']='('.$oddt_totalqty.'件)';
 				}
-				
+
 				//已发数量
 				$map3=array();
 				$data3=array();
@@ -1112,6 +1114,7 @@ class OrdersController extends CommController {
 			}
 			$list[$k]['orderdetail']=$data2;
 			$list[$k]['countdetail']=count($data2);
+//            dump($list);
 			
 			//状态 我的订单状态 以fw_orders表为主
 			if($v['od_state']==0){
