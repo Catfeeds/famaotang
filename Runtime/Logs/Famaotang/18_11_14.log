@@ -1,0 +1,100 @@
+[ 2018-11-14T10:08:23+08:00 ] 127.0.0.1 /Famaotang/Mine
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.015001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_fanlidetail` [ RunTime:0.0400s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0180s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_id` = 1 AND `dl_unitcode` = '3183' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `dlt_id`,`dlt_name`,`dlt_level` FROM `fw_dltype` WHERE `dlt_id` = 7 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('3','8') AND `od_virtualstock` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT SUM(fl_money) AS tp_sum FROM `fw_fanlidetail` WHERE `fl_dlid` = 1 AND `fl_unitcode` = '3183' AND `fl_state` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT SUM(fl_shouxufei) AS tp_sum FROM `fw_fanlidetail` WHERE `fl_dlid` = 1 AND `fl_unitcode` = '3183' AND `fl_state` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('3','8') AND `od_virtualstock` = 0 AND `od_expressdate` BETWEEN 1541001600 AND 1542161303 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_id` = 1 AND `dl_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` = 1 AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('43') AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('44') AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('45') AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('46') AND `dl_unitcode` = '3183'  [ RunTime:0.0000s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_expressdate` BETWEEN 1541001600 AND 1542161303 AND `od_oddlid` IN ('1','43','44','45','46') AND `od_state` IN ('3','8') LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_expressdate` BETWEEN 1525104000 AND 1542161303 AND `od_oddlid` IN ('1','43','44','45','46') AND `od_state` IN ('3','8') LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_virtualstock` = 0 AND `od_state` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('1','2') AND `od_virtualstock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_balance` [ RunTime:0.0250s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_receiveid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_receiveid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_sendid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 2 AND `bl_isyfk` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_sendid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 1 AND `bl_isyfk` = 0 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: item D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Runtime\Cache\Famaotang\1aed7ef192cf2811b46b83178c55dc29.php 第 142 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] ini_set(): A session is active. You cannot change the session module's ini settings at this time D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\index.php 第 36 行.
+
+[ 2018-11-14T10:08:46+08:00 ] 127.0.0.1 /Famaotang/Mine
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.014001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `fw_dltype` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_fanlidetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_dealer` WHERE `dl_id` = 1 AND `dl_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `dlt_id`,`dlt_name`,`dlt_level` FROM `fw_dltype` WHERE `dlt_id` = 7 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('3','8') AND `od_virtualstock` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(fl_money) AS tp_sum FROM `fw_fanlidetail` WHERE `fl_dlid` = 1 AND `fl_unitcode` = '3183' AND `fl_state` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(fl_shouxufei) AS tp_sum FROM `fw_fanlidetail` WHERE `fl_dlid` = 1 AND `fl_unitcode` = '3183' AND `fl_state` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('3','8') AND `od_virtualstock` = 0 AND `od_expressdate` BETWEEN 1541001600 AND 1542161326 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `dl_level` FROM `fw_dealer` WHERE `dl_id` = 1 AND `dl_unitcode` = '3183' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` = 1 AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('43') AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('44') AND `dl_unitcode` = '3183'  [ RunTime:0.0000s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('45') AND `dl_unitcode` = '3183'  [ RunTime:0.0010s ]
+SQL: SELECT `dl_id`,`dl_level` FROM `fw_dealer` WHERE `dl_referee` IN ('46') AND `dl_unitcode` = '3183'  [ RunTime:0.0000s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_expressdate` BETWEEN 1541001600 AND 1542161326 AND `od_oddlid` IN ('1','43','44','45','46') AND `od_state` IN ('3','8') LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(od_total) AS tp_sum FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_expressdate` BETWEEN 1525104000 AND 1542161326 AND `od_oddlid` IN ('1','43','44','45','46') AND `od_state` IN ('3','8') LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_virtualstock` = 0 AND `od_state` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_oddlid` = 1 AND `od_state` IN ('1','2') AND `od_virtualstock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_balance` [ RunTime:0.0070s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_receiveid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_receiveid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_sendid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 2 AND `bl_isyfk` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(bl_money) AS tp_sum FROM `fw_balance` WHERE `bl_sendid` = 1 AND `bl_unitcode` = '3183' AND `bl_type` IN ('1','2','3') AND `bl_state` = 1 AND `bl_isyfk` = 0 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: item D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Runtime\Cache\Famaotang\1aed7ef192cf2811b46b83178c55dc29.php 第 142 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] ini_set(): A session is active. You cannot change the session module's ini settings at this time D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\index.php 第 36 行.
+
