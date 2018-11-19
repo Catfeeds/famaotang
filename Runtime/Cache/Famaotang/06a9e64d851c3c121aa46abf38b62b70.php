@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>
 			产品详情</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -83,8 +83,8 @@
 					<!-- Slider -->
 					<div class="swiper-container">
 						<div class="swiper-wrapper">
-							<?php if($proinfo["pro_pic"] != '' ): ?><div class="swiper-slide"><img style="width:100%;" src="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic"]); ?>" alt=""></div><?php endif; ?>
-							<?php if($proinfo["pro_pic2"] != '' ): ?><div class="swiper-slide"><img style="width:100%;" src="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic2"]); ?>" alt=""></div><?php endif; ?>
+							<?php if($proinfo["pro_pic"] != '' ): ?><div class="swiper-slide"><img style="width:100%;" src="/Public/uploads/product/<?php echo ($proinfo["pro_pic"]); ?>" alt=""></div><?php endif; ?>
+							<?php if($proinfo["pro_pic2"] != '' ): ?><div class="swiper-slide"><img style="width:100%;" src="/Public/uploads/product/<?php echo ($proinfo["pro_pic2"]); ?>" alt=""></div><?php endif; ?>
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
@@ -130,13 +130,13 @@
 		</footer><?php endif; ?>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
-	<script type='text/javascript' src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js' charset='utf-8'></script>
+	<script type='text/javascript' src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js' charset='utf-8'></script>
 	<script type="text/javascript">
 		$.init();
 		$(function() {

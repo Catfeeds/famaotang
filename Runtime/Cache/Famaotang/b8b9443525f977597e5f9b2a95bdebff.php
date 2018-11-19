@@ -4,15 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>产品列表</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -82,14 +82,14 @@
 						</div>
 					</div>
 					<div class="row" style="background:#FFF;border-top:0.05rem solid #d5d5d5;border-bottom:0.05rem solid #d5d5d5;">
-      					<div class="col-50 kl-layout-center" id="pro_order" style="padding:.5rem 0;">智能排序<?php if($order_status > 0): ?><img id="pro_order_img" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/order_icon_down.png" style="width:1rem;"><?php else: ?><img id="pro_order_img" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/order_icon_up.png" style="width:1rem;"><?php endif; ?></div>
+      					<div class="col-50 kl-layout-center" id="pro_order" style="padding:.5rem 0;">智能排序<?php if($order_status > 0): ?><img id="pro_order_img" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/order_icon_down.png" style="width:1rem;"><?php else: ?><img id="pro_order_img" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/order_icon_up.png" style="width:1rem;"><?php endif; ?></div>
       					<div class="col-50 kl-layout-center" id="pro_filter" style="padding:.5rem 0;"><span id="pro_filter_span"><?php echo ($protype_name); ?></span><i class="iconfont icon-shaixuan" style="padding: 0 0.3rem;font-size:0.75rem"></i></div>
     				</div>
 					<!-- <div class="kl-cross"></div> -->
 					<div style="padding:0; background: #fff">
 						<ul class="kl-products-list">
 							<?php if(is_array($list)): foreach($list as $key=>$item): ?><li class="kl-products-item">
-								<div class="kl-layout-center"><img src="/famaotang/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:80%;margin:0.8rem" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
+								<div class="kl-layout-center"><img src="/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:80%;margin:0.8rem" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
 								<div class="pro_name" style="padding:.2rem .8rem 0 .8rem"><?php echo ($item["pro_name"]); ?></div>
 								<div style="padding:0 .8rem .2rem .8rem">
 									<?php if(($item["pro_dlprice"] != '') AND ($item["pro_dlprice"] != '0') ): ?><span style="color:red;font-size:0.3rem;">￥<span style="font-size: 1rem"><?php echo (number_format($item["pro_dlprice"],2, '.', '')); ?></span></span><?php endif; ?>
@@ -102,10 +102,10 @@
 			</div>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
 	<script type="text/javascript">
