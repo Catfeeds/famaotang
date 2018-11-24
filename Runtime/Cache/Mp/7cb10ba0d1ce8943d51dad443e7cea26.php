@@ -220,7 +220,10 @@ function nemuclose(z,obj){
 			<td height="40"   class="txtright" >补货订单最低金额：</td>
 			<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minnum"  class="input"  value="<?php echo ($dltinfo["dlt_minnum"]); ?>"   > </td>
 		</tr>
-
+		<!--<tr>-->
+			<!--<td height="40"   class="txtright" >补货订单最低数量：</td>-->
+			<!--<td class="txtleft" ><input    type="text" size="8" maxlength="10"  name="dlt_minamount"  class="input"  value="<?php echo ($dltinfo["dlt_minamount"]); ?>"   > </td>-->
+		<!--</tr>-->
 		<?php if($dltinfo["dlt_id"] > '0' ): ?><tr>
 				<td height="40"   class="txtright" >推荐返利设置：</td>
 				<td class="txtleft" >

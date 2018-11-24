@@ -4,15 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>购物车</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -80,7 +80,7 @@
 										<i class="iconfont icon-xuanze checkbtn" style="font-size:1rem;margin:.5rem;color: #7e7e7e"></i><?php endif; ?>
 									
 									<div class="kl-layout-horizontally-vcenter" style="width: 100%;border-bottom:0.05rem solid #d5d5d5;margin-right:0.3rem;padding:.3rem 0;">
-										<img src="/famaotang/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:3rem;margin:.5rem .5rem .5rem 0" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'">
+										<img src="/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:3rem;margin:.5rem .5rem .5rem 0" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'">
 										<div style="margin: 0 .3rem 0 0;width:100%">
 											<div class="kl-layout-horizontally-between">
 												 <div class="pro_name"><?php echo ($item["pro_name"]); ?></div>
@@ -133,10 +133,10 @@
 		</footer>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
 	<script type="text/javascript">

@@ -2,20 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>经销商管理</title>
+<title>代理业绩</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<script language="JavaScript">
-<!--
-function toggleCollapse(z,obj){
-  $(z).toggle();
-  if($(z).css("display")=="none"){
-      $(obj).attr("src","/Public/mp/static/menu_plus.gif"); 
-  }else{
-      $(obj).attr("src","/Public/mp/static/menu_minus.gif"); 
-  }
-}
-//-->
+<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="/Public/mp/js/themes/icon.css">
+<script type="text/javascript" src="/Public/mp/js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="/Public/mp/js/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" >
+$(document).ready(function() {
+   $("#begintime").datebox("setValue", "<?php echo ($begintime); ?>"); 
+   $("#endtime").datebox("setValue", "<?php echo ($endtime); ?>"); 
+  });
 </script>
 </head>
 <body>
@@ -181,38 +179,56 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商架构树</A></div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="#">代理业绩</A></div>
 <div class="nav_r"></div>
 </div>
 <div class="height10"></div>
-<div style="float:left; width:40%">
-<form action="<?php echo U('Mp/Dealer/searchtree');?>"   method="post" name="fmmm"  >
-<input    type="text" size="30" maxlength="30"  name="dlusername"  class="input"  onfocus="if(this.value=='请填写代理账号')this.value=''"   value="请填写代理账号"   style="color:#999999"   >   <input type="submit" name="Submit" value="搜 索"  ></form>
+<div>
+<div style="float:left; width:38%">
+统计日期：<?php echo ($begintime); ?> 至 <?php echo ($endtime); ?>  (仅统计已发货和已完成的订单金额)
 </div>
-<div style="float:right; width:50%; text-align:right">
+<div style="float:right; width:61%; text-align:right"><form action="<?php echo U('Mp/Orders/dlordersum');?>"   method="post" name="fmmm"  >
+发货日期：<input    type="text" size="15" maxlength="15"  name="begintime"  class="easyui-datebox"  value=""   id="begintime"    >　到　<input    type="text" size="15" maxlength="15"  name="endtime"  class="easyui-datebox"  value=""   id="endtime"    >　
+<select name="dl_type"   class="select" style="width:100px"  >
+					<option value="0" >按级别过滤</option>
+					<?php if(is_array($dltypelist)): $key = 0; $__LIST__ = $dltypelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key;?><option value="<?php echo ($vo["dlt_id"]); ?>"  <?php if($vo["dlt_id"] == $dl_type): ?>selected<?php endif; ?> ><?php echo ($vo["dlt_name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+</select>　
+<input    type="text" size="20" maxlength="20"  name="dlusername"  class="input"   onfocus="if(this.value=='请填写代理账号')this.value=''"   value="<?php echo ($dlusername); ?>"   style="color:#999999"  >　<input type="submit" name="Submit" value="查 询"  >
+</form>
+</div>
 </div>
 <div class="height10"></div>
 <div class="content">
-<div class="tree_l" >
-<div class="tree_t">结构树</div>
-<div style="padding:10px 10px 10px 0">
-<ul class="treelist" >
-<?php echo ($list_html); ?>
-</ul>
+<table class="table_results" >
+<thead><tr>
+<th  width="18%" style="text-align:left"><span>经销商名称</span></th>
+<th  width="10%"   ><span>经销商编号</span></th>
+<th  width="12%" ><span>电话</span></th>
+<th  width="12%" ><span>级别</span></th>
+<th  width="14%" ><span>上家代理</span></th>
+<th  width="14%"  ><span>推荐人</span></th>
+<th  width="10%"  ><span>下单金额<?php if($unitcode == '2976' ): ?>/订购数<?php endif; ?></span></th>
+<th  width="10%"  ><span>操作</span></th>
+</tr></thead>
+<tbody>
+<?php if(is_array($dealerlist)): foreach($dealerlist as $key=>$item): ?><tr class="<?php echo ($key%2 == 0?'odd':'even'); ?>" >
+<td class="data" style="text-align:left"  ><span><?php echo ($item["dl_name"]); ?> (<?php echo ($item["dl_username"]); ?>)</span></td>
+<td class="data" ><span><?php echo ($item["dl_number"]); ?></span></td>
+<td class="data"><span><?php echo ($item["dl_tel"]); ?></span></td>
+<td class="data"><span><?php echo ($item["dl_type_str"]); ?></span></td>
+<td class="data"><span><?php echo ($item["dl_belong_str"]); ?></span></td>
+<td class="data"><span><?php echo ($item["dl_referee_str"]); ?></span></td>
+<td class="data"><span><?php echo (number_format($item["dl_odsum"],2,'.','')); ?> 元</span><?php if($item["dl_minnumstr"] != '' ): ?><br /><?php echo ($item["dl_minnumstr"]); endif; ?></td>
+<td class="data"><span><a href="<?php echo U('Mp/Orders/index?dlusername='.$item['dl_username'].'');?>">明细</a></span></td>
+</tr><?php endforeach; endif; ?>
+</tbody>
+</table>
 <div class="height10"></div>
 <table class="page" cellpadding="0" cellspacing="0"><tbody>
 <tr>
 <td><?php echo ($page); ?></td>
 </tr></tbody></table>
-<div class="height10"></div>
-</div>
-</div>
-<div class="tree_r"  >
-<div class="tree_t"  >详细资料</div>
-<div style="padding:5px" >
-<iframe src="<?php echo U('Mp/Dealer/treedetail');?>" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width="373" height="900"   scrolling="auto" name="dealerframe"></iframe>
-</div>
-</div>
+<div style="float:right; line-height:4em">共 <?php echo ($pagecount); ?> 条记录　</div>
 </div>
 <div class="height20"></div>
 </div>

@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>修改密码</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
 </head>
 <body>
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<!--<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" />-->
+    <div style="font-size: 18px;padding-top: 10px">代理商管理系统</div><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
@@ -22,7 +23,7 @@
 <div class="leftmenu">
 <div class="menu_list">
 <div class="menu_top">
-<div  style="line-height:51px; height:51px;"><img src="/famaotang/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
+<div  style="line-height:51px; height:51px;"><img src="/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
 </div>  
 <?php if(($qypurview["10000"]) == "10000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu01"  onClick="nemuclose('#zi01',this)" >基本资料</ul>
@@ -74,8 +75,10 @@
 	<ul class="menu_son" id="zi18">
 
 	<?php if(($qypurview["18001"]) == "18001"): ?><li><A href="<?php echo U('Mp/Capital/index');?>" class="<?php echo ($curr =='capital' ?'curr':''); ?>" >代理资金</A></li><?php endif; ?>
-<!--	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li><?php endif; ?>-->
-	<?php if(($qypurview["18004"]) == "18004"): ?><li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
+	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li>
+
+	<eq name="qypurview.18004" value="18004">	
+	    <li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
 	
 <!--	<?php if(($qypurview["18006"]) == "18006"): ?><li><A href="<?php echo U('Mp/Capital/recashlist');?>" class="<?php echo ($curr =='recashlist2' ?'curr':''); ?>" >提现记录</A></li><?php endif; ?>-->
 	

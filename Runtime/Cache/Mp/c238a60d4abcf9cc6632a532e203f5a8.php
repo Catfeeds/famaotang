@@ -2,21 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>经销商管理</title>
+<title>销售奖设置</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<script language="JavaScript">
-<!--
-function toggleCollapse(z,obj){
-  $(z).toggle();
-  if($(z).css("display")=="none"){
-      $(obj).attr("src","/Public/mp/static/menu_plus.gif"); 
-  }else{
-      $(obj).attr("src","/Public/mp/static/menu_minus.gif"); 
-  }
-}
-//-->
-</script>
 </head>
 <body>
 <div class="header">
@@ -181,38 +169,93 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商架构树</A></div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Fanli/salemonfanlirate');?>">销售奖设置</A>　&gt;　<A href="#"><?php echo ($atitle); ?></A></div>
 <div class="nav_r"></div>
 </div>
-<div class="height10"></div>
-<div style="float:left; width:40%">
-<form action="<?php echo U('Mp/Dealer/searchtree');?>"   method="post" name="fmmm"  >
-<input    type="text" size="30" maxlength="30"  name="dlusername"  class="input"  onfocus="if(this.value=='请填写代理账号')this.value=''"   value="请填写代理账号"   style="color:#999999"   >   <input type="submit" name="Submit" value="搜 索"  ></form>
-</div>
-<div style="float:right; width:50%; text-align:right">
-</div>
-<div class="height10"></div>
+<div class="height20"></div>
 <div class="content">
-<div class="tree_l" >
-<div class="tree_t">结构树</div>
-<div style="padding:10px 10px 10px 0">
-<ul class="treelist" >
-<?php echo ($list_html); ?>
-</ul>
-<div class="height10"></div>
-<table class="page" cellpadding="0" cellspacing="0"><tbody>
-<tr>
-<td><?php echo ($page); ?></td>
-</tr></tbody></table>
-<div class="height10"></div>
-</div>
-</div>
-<div class="tree_r"  >
-<div class="tree_t"  >详细资料</div>
-<div style="padding:5px" >
-<iframe src="<?php echo U('Mp/Dealer/treedetail');?>" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width="373" height="900"   scrolling="auto" name="dealerframe"></iframe>
-</div>
-</div>
+<form action="<?php echo U('Mp/Fanli/salemonfanlirate_save');?>"   method="post" name="fmmm"  >
+<input type="hidden" value="<?php echo ($smfrinfo["smfr_id"]); ?>" name="smfr_id" />
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >
+             <tr>     
+                  <td height="40"   width="25%" class="txtright" ></td>
+				  <td width="75%" class="txtleft" ></td>
+			  </tr>
+			  <tr>     
+                  <td height="40"   class="txtright" >代理级别：</td>
+				  <td class="txtleft" >
+				  <select name="smfr_dltype"   class="select"   >
+					<option value="0" >选择代理级别　</option>
+					<?php if(is_array($dltypelist)): $key = 0; $__LIST__ = $dltypelist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($key % 2 );++$key; if($smfrinfo["smfr_id"] > 0 ): if($vo["dlt_id"] == $smfrinfo["smfr_dltype"] ): ?><option value="<?php echo ($vo["dlt_id"]); ?>"  selected ><?php echo ($vo["dlt_name"]); ?></option><?php endif; ?>
+					<?php else: ?>
+					<option value="<?php echo ($vo["dlt_id"]); ?>"  <?php if($vo["dlt_id"] == $smfrinfo["smfr_dltype"] ): ?>selected<?php endif; ?> ><?php echo ($vo["dlt_name"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+                  </select>
+				  </td>
+			  </tr>
+			   <tr>     
+                  <td height="40"   class="txtright" >业绩计算时间：</td>
+				  <td class="txtleft" >
+				  <select name="smfr_countdate"   class="select"  >
+				  <?php if($smfrinfo["smfr_id"] > 0 ): if($smfrinfo["smfr_countdate"] == '1' ): ?><option value="1"  >按月　</option><?php endif; ?>
+					  <?php if($smfrinfo["smfr_countdate"] == '2' ): ?><option value="2"   >按年　</option><?php endif; ?>
+				  <?php else: ?>
+					<option value="1"  <?php if($smfrinfo["smfr_countdate"] == '1' ): ?>selected<?php endif; ?> >按月　</option>
+					<option value="2"  <?php if($smfrinfo["smfr_countdate"] == '2' ): ?>selected<?php endif; ?> >按年　</option><?php endif; ?>
+                  </select>
+				  </td>
+			  </tr>
+			  
+			   
+			   <tr>     
+                  <td height="40"  class="txtright" >业绩区间：</td>
+				  <td  class="txtleft" ><input type="text" size="12" maxlength="12"  name="smfr_minsale" class="input" value="<?php echo ($smfrinfo["smfr_minsale"]); ?>" > -- <input type="text" size="12" maxlength="12"  name="smfr_maxsale" class="input" value="<?php echo ($smfrinfo["smfr_maxsale"]); ?>" ></td>
+			  </tr>
+			  
+			   <tr>     
+                  <td height="40"   class="txtright" >业绩计算方式：</td>
+				  <td class="txtleft" >
+				  <select name="smfr_saleunit"   class="select"   >
+				  <?php if($smfrinfo["smfr_id"] > 0 ): if($smfrinfo["smfr_saleunit"] == '1' ): ?><option value="1"  >订单金额　</option><?php endif; ?>
+					  <?php if($smfrinfo["smfr_saleunit"] == '2' ): ?><option value="2"  >销售数量　</option><?php endif; ?>
+				  <?php else: ?>
+				  
+					<option value="1"  <?php if($smfrinfo["smfr_saleunit"] == '1' ): ?>selected<?php endif; ?> >订单金额　</option>
+					<option value="2"  <?php if($smfrinfo["smfr_saleunit"] == '2' ): ?>selected<?php endif; ?> >销售数量　</option><?php endif; ?>
+                  </select>
+				  </td>
+			  </tr>
+			  
+			   <tr   >     
+                  <td height="40"  class="txtright" >奖金返利：</td>
+				  <td  class="txtleft" ><input type="text" size="8" maxlength="8"  name="smfr_fanlirate" class="input" value="<?php echo ($smfrinfo["smfr_fanlirate"]); ?>" > 数字在1-0间，则以下单价的百分比计算，如0.03代表以下单价的3%计算，如果大于1，则以具体多少元计算</td>
+			  </tr>
+			  
+			   <tr>     
+                  <td height="40"   class="txtright" >奖金计算方式：</td>
+				  <td class="txtleft" >
+				  <select name="smfr_fanlieval"   class="select"   >
+				   <?php if($smfrinfo["smfr_id"] > 0 ): if($smfrinfo["smfr_fanlieval"] == '1' ): ?><option value="1"  >固定奖金　</option><?php endif; ?>
+				   <?php if($smfrinfo["smfr_fanlieval"] == '2' ): ?><option value="2"  >按销量X奖金返利　</option><?php endif; ?>
+				   <?php else: ?>
+					<option value="1"  <?php if($smfrinfo["smfr_fanlieval"] == '1' ): ?>selected<?php endif; ?> >固定奖金　</option>
+					<option value="2"  <?php if($smfrinfo["smfr_fanlieval"] == '2' ): ?>selected<?php endif; ?> >按销量X奖金返利　</option><?php endif; ?>
+                  </select>
+				  </td>
+			  </tr>
+			  
+			   <tr>     
+                  <td height="40"  class="txtright" >备注：</td>
+				  <td  class="txtleft" ><input type="text" size="40" maxlength="100"  name="smfr_remark" class="input" value="<?php echo ($smfrinfo["smfr_remark"]); ?>" ></td>
+			  </tr>
+			   
+
+			  <tr>  <td height="60" ></td>
+                    <td  class="txtleft"  >
+             <input type="submit" name="Submit" value="<?php echo ($atitle); ?>" class="botton" >　　　　<input name="" type="reset" value="返 回"  onClick="javascript:window.history.go(-1);" class="botton" >
+            </td>
+			  </tr>
+			</table>
+</form>
 </div>
 <div class="height20"></div>
 </div>

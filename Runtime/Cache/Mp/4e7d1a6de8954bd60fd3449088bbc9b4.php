@@ -2,21 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>经销商管理</title>
+<title>留言反馈</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<script language="JavaScript">
-<!--
-function toggleCollapse(z,obj){
-  $(z).toggle();
-  if($(z).css("display")=="none"){
-      $(obj).attr("src","/Public/mp/static/menu_plus.gif"); 
-  }else{
-      $(obj).attr("src","/Public/mp/static/menu_minus.gif"); 
-  }
-}
-//-->
-</script>
 </head>
 <body>
 <div class="header">
@@ -181,38 +169,41 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商架构树</A></div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="#">留言反馈</A></div>
 <div class="nav_r"></div>
 </div>
-<div class="height10"></div>
-<div style="float:left; width:40%">
-<form action="<?php echo U('Mp/Dealer/searchtree');?>"   method="post" name="fmmm"  >
-<input    type="text" size="30" maxlength="30"  name="dlusername"  class="input"  onfocus="if(this.value=='请填写代理账号')this.value=''"   value="请填写代理账号"   style="color:#999999"   >   <input type="submit" name="Submit" value="搜 索"  ></form>
-</div>
-<div style="float:right; width:50%; text-align:right">
-</div>
+
 <div class="height10"></div>
 <div class="content">
-<div class="tree_l" >
-<div class="tree_t">结构树</div>
-<div style="padding:10px 10px 10px 0">
-<ul class="treelist" >
-<?php echo ($list_html); ?>
-</ul>
+<table class="table_results" >
+<thead><tr>
+<th  width="5%" ><span>ID</span></th>
+<th  width="10%" ><span>联系人</span></th>
+<th  width="10%" ><span>联系电话</span></th>
+<th  width="40%"  style="text-align:left" ><span>反馈内容</span></th>
+<th  width="9%" ><span>日期</span></th>
+<th  width="9%" ><span>会员</span></th>
+<th  width="7%" ><span>状态</span></th>
+<th  width="10%" ><span>操作</span></th>
+</tr></thead>
+<tbody>
+<?php if(is_array($list)): foreach($list as $key=>$item): ?><tr class="<?php echo ($key%2 == 0?'odd':'even'); ?>" >
+<td class="data"><span><?php echo ($item["fb_id"]); ?></span></td>
+<td class="data" ><span><?php echo ($item["fb_contact"]); ?></span></td>
+<td class="data" ><span><?php echo ($item["fb_tel"]); ?></span></td>
+<td class="data" style="text-align:left"  ><span><?php echo ($item["fb_content"]); ?></span></td>
+<td class="data" ><span><?php echo (date('Y-m-d H:i:s',$item["fb_addtime"])); ?></span></td>
+<td class="data"><span><?php echo ($item["fb_username_str"]); ?></span></td>
+<td class="data"><span><?php echo ($item["fb_state_str"]); ?></span></td>
+<td class="data"><span><a href="<?php echo U('Mp/Jfmobi/feedbackdetail?fb_id='.$item['fb_id'].'');?>" >详细</a> <a  href="#" onClick="javascript:var truthBeTold = window.confirm('该操作将彻底删除,谨慎操作!'); if (truthBeTold) window.location.href='<?php echo U('Mp/Jfmobi/feedbackdelete?fb_id='.$item['fb_id'].'');?>';" >删除</a></span></td>
+</tr><?php endforeach; endif; ?>
+</tbody>
+</table>
 <div class="height10"></div>
 <table class="page" cellpadding="0" cellspacing="0"><tbody>
 <tr>
 <td><?php echo ($page); ?></td>
 </tr></tbody></table>
-<div class="height10"></div>
-</div>
-</div>
-<div class="tree_r"  >
-<div class="tree_t"  >详细资料</div>
-<div style="padding:5px" >
-<iframe src="<?php echo U('Mp/Dealer/treedetail');?>" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width="373" height="900"   scrolling="auto" name="dealerframe"></iframe>
-</div>
-</div>
 </div>
 <div class="height20"></div>
 </div>

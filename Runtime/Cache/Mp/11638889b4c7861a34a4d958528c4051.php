@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>产品管理</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/kedt4110/themes/default/default.css" />
-<script type="text/javascript" src="/famaotang/Public/kedt4110/kindeditor-min.js"></script>
-<script type="text/javascript" src="/famaotang/Public/kedt4110/lang/zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/kedt4110/themes/default/default.css" />
+<script type="text/javascript" src="/Public/kedt4110/kindeditor-min.js"></script>
+<script type="text/javascript" src="/Public/kedt4110/lang/zh_CN.js"></script>
 <script type="text/javascript" >
 KindEditor.lang({
 		shipin : '插入视频外链'
@@ -24,7 +24,7 @@ KindEditor.lang({
 					allowFileUpload : false,
 					allowFileManager : true,
 					filterMode : true,
-					fileManagerJson : '/famaotang/Public/kedt4110/php/mobi_file_manager_json.php?sture=<?php echo ($sture); ?>&ttamp=<?php echo ($ttamp); ?>&uid=<?php echo ($uid); ?>',
+					fileManagerJson : '/Public/kedt4110/php/mobi_file_manager_json.php?sture=<?php echo ($sture); ?>&ttamp=<?php echo ($ttamp); ?>&uid=<?php echo ($uid); ?>',
 					afterCreate : function() {
 					var self = this;
 					K.ctrl(document, 13, function() {
@@ -128,9 +128,10 @@ padding:5px 0 5px 0
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<!--<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" />-->
+    <div style="font-size: 18px;padding-top: 10px">代理商管理系统</div><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
@@ -141,7 +142,7 @@ padding:5px 0 5px 0
 <div class="leftmenu">
 <div class="menu_list">
 <div class="menu_top">
-<div  style="line-height:51px; height:51px;"><img src="/famaotang/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
+<div  style="line-height:51px; height:51px;"><img src="/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
 </div>  
 <?php if(($qypurview["10000"]) == "10000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu01"  onClick="nemuclose('#zi01',this)" >基本资料</ul>
@@ -193,8 +194,10 @@ padding:5px 0 5px 0
 	<ul class="menu_son" id="zi18">
 
 	<?php if(($qypurview["18001"]) == "18001"): ?><li><A href="<?php echo U('Mp/Capital/index');?>" class="<?php echo ($curr =='capital' ?'curr':''); ?>" >代理资金</A></li><?php endif; ?>
-<!--	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li><?php endif; ?>-->
-	<?php if(($qypurview["18004"]) == "18004"): ?><li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
+	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li>
+
+	<eq name="qypurview.18004" value="18004">	
+	    <li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
 	
 <!--	<?php if(($qypurview["18006"]) == "18006"): ?><li><A href="<?php echo U('Mp/Capital/recashlist');?>" class="<?php echo ($curr =='recashlist2' ?'curr':''); ?>" >提现记录</A></li><?php endif; ?>-->
 	
@@ -339,31 +342,31 @@ function nemuclose(z,obj){
 			   <tr>     
                   <td height="40"  class="txtright" >产品主图：</td>
 				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
-				  <?php if(($proinfo["pro_pic_str"]) != ""): ?><a href="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic_str"]); ?></a><?php endif; ?> <input name="pic_file" type="file" /> (建议图片宽度为640px,高度要统一) <input type="hidden"  value="<?php echo ($proinfo["pro_pic"]); ?>" name="old_pro_pic" />
+				  <?php if(($proinfo["pro_pic_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic_str"]); ?></a><?php endif; ?> <input name="pic_file" type="file" /> (建议图片宽度为640px,高度要统一) <input type="hidden"  value="<?php echo ($proinfo["pro_pic"]); ?>" name="old_pro_pic" />
 				  </td>
 			  </tr>
 			   <tr>     
                   <td height="40"  class="txtright" >产品图2：</td>
 				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
-				  <?php if(($proinfo["pro_pic2_str"]) != ""): ?><a href="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic2"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic2_str"]); ?></a> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=2');?>" >删</a><?php endif; ?> <input name="pic_file2" type="file" />  <input type="hidden"  value="<?php echo ($proinfo["pro_pic2"]); ?>" name="old_pro_pic2" />
+				  <?php if(($proinfo["pro_pic2_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic2"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic2_str"]); ?></a> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=2');?>" >删</a><?php endif; ?> <input name="pic_file2" type="file" />  <input type="hidden"  value="<?php echo ($proinfo["pro_pic2"]); ?>" name="old_pro_pic2" />
 				  </td>
 			  </tr>
 <!-- 			   <tr>     
                   <td height="40"  class="txtright" >产品图3：</td>
 				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
-				  <?php if(($proinfo["pro_pic3_str"]) != ""): ?><a href="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic3"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic3_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=3');?>"  >删</a></a><?php endif; ?> <input name="pic_file3" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic3"]); ?>" name="old_pro_pic3" />
+				  <?php if(($proinfo["pro_pic3_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic3"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic3_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=3');?>"  >删</a></a><?php endif; ?> <input name="pic_file3" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic3"]); ?>" name="old_pro_pic3" />
 				  </td>
 			  </tr>
 			   <tr>     
                   <td height="40"  class="txtright" >产品图4：</td>
 				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
-				  <?php if(($proinfo["pro_pic4_str"]) != ""): ?><a href="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic4"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic4_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=4');?>" >删</a></a><?php endif; ?> <input name="pic_file4" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic4"]); ?>" name="old_pro_pic4" />
+				  <?php if(($proinfo["pro_pic4_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic4"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic4_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=4');?>" >删</a></a><?php endif; ?> <input name="pic_file4" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic4"]); ?>" name="old_pro_pic4" />
 				  </td>
 			  </tr> -->
 <!-- 			   <tr>     
                   <td height="40"  class="txtright" >产品图5：</td>
 				  <td  class="txtleft"  style="padding:5px 5px 10px 0" >
-				  <?php if(($proinfo["pro_pic5_str"]) != ""): ?><a href="/famaotang/Public/uploads/product/<?php echo ($proinfo["pro_pic5"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic5_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=5');?>" >删</a></a><?php endif; ?> <input name="pic_file5" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic5"]); ?>" name="old_pro_pic5" />
+				  <?php if(($proinfo["pro_pic5_str"]) != ""): ?><a href="/Public/uploads/product/<?php echo ($proinfo["pro_pic5"]); ?>" target="_blank" ><?php echo ($proinfo["pro_pic5_str"]); ?> <a href="<?php echo U('Mp/Product/delpic?proid='.$proinfo['pro_id'].'&pic=5');?>" >删</a></a><?php endif; ?> <input name="pic_file5" type="file" /> (建议图片大小:600X600) <input type="hidden"  value="<?php echo ($proinfo["pro_pic5"]); ?>" name="old_pro_pic5" />
 				  </td>
 			  </tr> -->
 

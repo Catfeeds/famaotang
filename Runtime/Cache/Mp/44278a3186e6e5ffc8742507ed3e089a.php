@@ -3,11 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>基本设置</title>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/mp/css/style.css" />
-<script type="text/javascript" src="/famaotang/Public/mp/js/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/kedt4110/themes/default/default.css" />
-<script type="text/javascript" src="/famaotang/Public/kedt4110/kindeditor-min.js"></script>
-<script type="text/javascript" src="/famaotang/Public/kedt4110/lang/zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
+<script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/Public/kedt4110/themes/default/default.css" />
+<script type="text/javascript" src="/Public/kedt4110/kindeditor-min.js"></script>
+<script type="text/javascript" src="/Public/kedt4110/lang/zh_CN.js"></script>
 <script type="text/javascript" >
 KindEditor.lang({
 		shipin : '插入视频外链'
@@ -24,7 +24,7 @@ KindEditor.lang({
 					allowFileUpload : false,
 					allowFileManager : true,
 					filterMode : true,
-					fileManagerJson : '/famaotang/Public/kedt4110/php/mobi_file_manager_json.php?sture=<?php echo ($sture); ?>&ttamp=<?php echo ($ttamp); ?>&uid=<?php echo ($uid); ?>',
+					fileManagerJson : '/Public/kedt4110/php/mobi_file_manager_json.php?sture=<?php echo ($sture); ?>&ttamp=<?php echo ($ttamp); ?>&uid=<?php echo ($uid); ?>',
 					afterCreate : function() {
 					var self = this;
 					K.ctrl(document, 13, function() {
@@ -94,9 +94,10 @@ KindEditor.lang({
 <div class="header">
 <div class="bound">
 <div class="logo">
-<?php if(!empty($qypic)): ?><img src="/famaotang/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
+<?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/famaotang/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<!--<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" />-->
+    <div style="font-size: 18px;padding-top: 10px">代理商管理系统</div><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
@@ -106,7 +107,7 @@ KindEditor.lang({
 <div class="leftmenu">
 <div class="menu_list">
 <div class="menu_top">
-<div  style="line-height:51px; height:51px;"><img src="/famaotang/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
+<div  style="line-height:51px; height:51px;"><img src="/Public/mp/static/home2.png"   style="vertical-align:middle; width:20px; height:20px; margin:0 3px 4px 10px" /> <A href="<?php echo U('Mp/Index/index');?>" style="color:#06c; font-size:14px" >首页</A></div>
 </div>  
 <?php if(($qypurview["10000"]) == "10000"): ?><div class="menu_parent">
 	<ul class="menu_sontitle" id="fu01"  onClick="nemuclose('#zi01',this)" >基本资料</ul>
@@ -158,8 +159,10 @@ KindEditor.lang({
 	<ul class="menu_son" id="zi18">
 
 	<?php if(($qypurview["18001"]) == "18001"): ?><li><A href="<?php echo U('Mp/Capital/index');?>" class="<?php echo ($curr =='capital' ?'curr':''); ?>" >代理资金</A></li><?php endif; ?>
-<!--	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li><?php endif; ?>-->
-	<?php if(($qypurview["18004"]) == "18004"): ?><li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
+	<?php if(($qypurview["18002"]) == "18002"): ?><li><A href="<?php echo U('Mp/Capital/yufukuan');?>" class="<?php echo ($curr =='yufukuan' ?'curr':''); ?>" >预付款明细</A></li>
+
+	<eq name="qypurview.18004" value="18004">	
+	    <li><A href="<?php echo U('Mp/Capital/dlbalance');?>" class="<?php echo ($curr =='dlbalance' ?'curr':''); ?>" >余额明细</A></li><?php endif; ?>
 	
 <!--	<?php if(($qypurview["18006"]) == "18006"): ?><li><A href="<?php echo U('Mp/Capital/recashlist');?>" class="<?php echo ($curr =='recashlist2' ?'curr':''); ?>" >提现记录</A></li><?php endif; ?>-->
 	
@@ -211,7 +214,7 @@ KindEditor.lang({
 	<?php if(($qypurview["70023"]) == "70023"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=6');?>" class="<?php echo ($curr =='jfmo_peixun' ?'curr':''); ?>" >培训机构</A></li><?php endif; ?>
 	<?php if(($qypurview["70013"]) == "70013"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=2');?>" class="<?php echo ($curr =='jfmo_buyer' ?'curr':''); ?>" >买家秀</A></li><?php endif; ?>
 	<?php if(($qypurview["70021"]) == "70021"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=7');?>" class="<?php echo ($curr =='jfmo_huodong' ?'curr':''); ?>" >线下活动</A></li><?php endif; ?>		
-	<?php if(($qypurview["70006"]) == "70006"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=9');?>" class="<?php echo ($curr =='jfmo_jingjin' ?'curr':''); ?>" >每日精进</A></li><?php endif; ?>	
+	<?php if(($qypurview["70006"]) == "70006"): ?><li><A href="<?php echo U('Mp/Jfmobi/newslist?news_type=9');?>" class="<?php echo ($curr =='jfmo_jingjin' ?'curr':''); ?>" >知识库</A></li><?php endif; ?>	
 	
 	<?php if(($qypurview["70005"]) == "70005"): ?><li><A href="<?php echo U('Mp/Jfmobi/product');?>" class="<?php echo ($curr =='jfmo_pro' ?'curr':''); ?>">产品展示</A></li><?php endif; ?>
 	<?php if(($qypurview["70007"]) == "70007"): ?><li><A href="<?php echo U('Mp/Jfmobi/piclist');?>" class="<?php echo ($curr =='jfmo_pics' ?'curr':''); ?>">图片管理</A></li><?php endif; ?>	

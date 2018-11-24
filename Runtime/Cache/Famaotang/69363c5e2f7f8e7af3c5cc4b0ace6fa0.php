@@ -4,15 +4,15 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>核对订单</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -102,7 +102,7 @@
 						<li>
 							<div class="order-list">
 								<?php if(is_array($shopcartlist)): foreach($shopcartlist as $key=>$item): if($item["pro_dlprice"] != '' ): ?><div class="order-content" style="padding-bottom:.5rem">
-											<div class="item-media" style="padding-top:0.2rem"><img src="/famaotang/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:3rem;margin:.5rem .5rem .5rem 0" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
+											<div class="item-media" style="padding-top:0.2rem"><img src="/Public/uploads/product/<?php echo ($item["pro_pic"]); ?>" style="width:3rem;margin:.5rem .5rem .5rem 0" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/logo_icon.png'"></div>
 											<div class="order-inner">
 												<div class="item-subtitle"><?php echo ($item["pro_name"]); ?></div>
 												<div class="order-remark">
@@ -168,10 +168,10 @@
 				<input type="hidden" id="dladd_id" value="<?php echo ($dladd_id); ?>">
 			</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
 	<script type="text/javascript">

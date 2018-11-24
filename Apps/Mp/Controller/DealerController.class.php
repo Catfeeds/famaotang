@@ -1436,7 +1436,7 @@ class DealerController extends CommController {
 				$data['dl_type_str']='-';
 			}
             //经销商区域设置
-//            判断等级
+//            初始化数据
             $dl_level20=$data['dl_level'];
             $data['dl_level20']=$dl_level20;
             $map3=array();
@@ -1452,7 +1452,18 @@ class DealerController extends CommController {
                 $data['dl_shi_str']='-';
                 $data['dl_qu_str']='-';
             }
-		
+//            //判断是否可以点击区按钮
+//            if($data['dl_shi']==4401 || $data['dl_shi']==4403){
+//                if($data['dl_level']==1){
+//                    $disabled=1;
+//                }
+//            }else{
+//                if($data['dl_level']==1){
+//                    $disabled=0;
+//                }else{
+//                    $disabled=1;
+//                }
+//            }
 			//当前上家经销商
 			if($data['dl_belong']>0){
 				$map2=array();
@@ -1600,6 +1611,7 @@ class DealerController extends CommController {
         $this->assign('dltypelist', $dltypelist);
 		
 		$this->assign('dl_type', $dl_type);
+		$this->assign('disabled', $disabled);
         $this->assign('dl_status', $dl_status);
 		$this->assign('begintime', $begintime);
         $this->assign('dealerinfo', $data);
@@ -2780,6 +2792,7 @@ class DealerController extends CommController {
 			$data['dlt_fanli10']=I('post.dlt_fanli10','');
 			$data['dlt_firstquota']=I('post.dlt_firstquota','');
 			$data['dlt_minnum']=I('post.dlt_minnum','');
+			$data['dlt_minamount']=I('post.dlt_minamount','');
 			$data['dlt_butie']=I('post.dlt_butie','');
 			
 			
@@ -4558,101 +4571,111 @@ class DealerController extends CommController {
         $seachprov=intval(I('post.seachprov',0));
         $seachcity=intval(I('post.seachcity',0));
         $seachdistrict=intval(I('post.seachdistrict',0));
-//        dump($seachprov);
-//        dump($seachcity);
-//        dump($seachdistrict);
-//        die();
-        $dl_typeid=intval(I('get.dl_type',0));
-//        $dl_status=intval(I('get.dl_status',''));
-//        dump($dl_status);
-//        if($dl_status!=1){
-//            $this->error('对不起，该经销商未审核','',2);
-//        }
         $id=intval(I('get.dl_id',0));
         $Dealer = M('Dealer');
+        $data=$Dealer->where(['dl_id'=>$id])->find();
         $where['dl_id']=$id;
         $map['dl_sz_sheng']=$seachprov;
         $map['dl_sz_shi']=$seachcity;
         $map['dl_sz_qu']=$seachdistrict;
-//        $map['dl_status']=1;
-   if($seachprov!=0 && $seachcity!=0){
-       $sheng_city_qu=$Dealer->where($map)->find();
-       if($sheng_city_qu){
-           $this->error('对不起，该区域已被设置','',2);
-       }else{
-           $update=$Dealer->where($where)->save($map);
-           if($update){
-               $this->success('区域设置成功',U('Mp/Dealer/index'),2);
-           }else{
-               $this->error('区域设置失败','',2);
-           }
-       }
-  }else{
-       $update=$Dealer->where($where)->save($map);
-       if($update){
-           $this->success('区域设置成功',U('Mp/Dealer/index'),2);
-       }else{
-           $this->error('区域设置失败','',2);
-       }
-   }
+        if($seachprov){
+            if($data['dl_level']==1){
+                if($seachprov==11||$seachprov==12||$seachprov==31||$seachprov==50){//直辖市
+                    if($seachcity){
+                        $set=$Dealer->where(['dl_sz_sheng'=>$seachprov,'dl_sz_shi'=>$seachcity])->find();
+                        if($set){
+                            $this->error('区域已设置','',2);
+                        }else{
+                            $update=$Dealer->where($where)->save($map);
+                            if($update){
+                                $this->success('区域设置成功',U('Mp/Dealer/index'),2);
+                            }else{
+                                $this->error('区域设置失败','',2);
+                            }
+                        }
 
+                    }else{
+                        $this->error('区域设置失败','',2);
+                    }
 
+                }else{//非直辖市
+                    if($seachcity==4401 || $seachcity==4403){//广深
+                        if($seachdistrict){
+                            $set=$Dealer->where(['dl_sz_sheng'=>$seachprov,'dl_sz_shi'=>$seachcity,'dl_sz_qu'=>$seachdistrict])->find();
+                            if($set){
+                                $this->error('区域已设置','',2);
+                            }else{
+                                $update=$Dealer->where($where)->save($map);
+                                if($update){
+                                    $this->success('区域设置成功',U('Mp/Dealer/index'),2);
+                                }else{
+                                    $this->error('区域设置失败','',2);
+                                }
+                            }
+                        }else{
+                            $this->error('区域设置失败','',2);
+                        }
+                    }else{//非广深
+                        if($seachdistrict){//有区不能设置旗舰店
+                            $this->error('对不起，该区域无设置权限','',2);
+                        }else{//无区可设旗舰店
+                            if($seachcity){
+                                $set=$Dealer->where(['dl_sz_sheng'=>$seachprov,'dl_sz_shi'=>$seachcity])->find();
+                                if($set){
+                                    $this->error('区域已设置','',2);
+                                }else{
+                                    $update=$Dealer->where($where)->save($map);
+                                    if($update){
+                                        $this->success('区域设置成功',U('Mp/Dealer/index'),2);
+                                    }else{
+                                        $this->error('区域设置失败','',2);
+                                    }
+                                }
+                            }else{
+                                $this->error('区域设置失败','',2);
 
-//        }elseif($dl_level==2){
-////            dump(666);die();
-//            $map1=array();
-//            $map2=array();
-////            $map1['dl_unitcode']=$this->qy_unitcode;
-//            $map1['dl_sz_sheng']=$seachprov;
-//            $map1['dl_sz_shi']=$seachcity;
-//            $map1['dl_sz_qu']=$seachdistrict;
-//            $map1['dl_status']=1;
-//            $map1['dl_level']=1;
-//            $map2['dl_sz_sheng']=$seachprov;
-//            $map2['dl_sz_shi']=$seachcity;
-//            $map2['dl_sz_qu']=$seachdistrict;
-//            $map2['dl_status']=1;
-//            $map2['dl_id']=$id;
-//            $sheng_city_qu1=$Dealer->where($map1)->find();
-//            if($sheng_city_qu1){//有旗舰店
-//                $update1=$Dealer->save($map2);
-//                if($update1){
-//                    $this->success('区域设置成功',U('Mp/Dealer/index'),2);
-//                }else{
-//                    $this->error('区域设置失败','',2);
-//                }
-//            }else {//无旗舰店
-//                $map3['dl_sz_sheng']=$seachprov;
-//                $map3['dl_sz_shi']=$seachcity;
-//                $map3['dl_sz_qu']=$seachdistrict;
-//                $map3['dl_status']=1;
-//                $map3['dl_level']=2;
-//                $sheng_city_qu2=$Dealer->where($map3)->find();
-//                if($sheng_city_qu2){//有体验店
-//                    $this->error('对不起，该区域已经有体验店','',2);
-//                }else{
-//                    $update2=$Dealer->where($where)->save($map3);
-//                    if($update2){
-//                        $this->success('区域设置成功',U('Mp/Dealer/index'),2);
-//                    }
-//
-//                }
-//            }
-//        }else{
-////            dump(666);die();
-////            $map4['dl_sz_sheng']=$seachprov;
-////            $map4['dl_sz_shi']=$seachcity;
-////            $map4['dl_sz_qu']=$seachdistrict;
-////            $map4['dl_status']=1;
-////            $update3=$Dealer->where($where)->save($map4);
-////            if($update3){
-////                $this->success('区域设置成功',U('Mp/Dealer/index'),2);
-////            }
-//            $this->error('对不起，该级别不能设置区域管理','',2);
-//  $this->error('对不起，该级别不能设置区域管理','',2);
-//        }
-//
-//
+                            }
+
+                        }
+                    }
+                }
+
+            }
+            if($data['dl_level']==2){
+                if($seachprov==11||$seachprov==12||$seachprov==31||$seachprov==50) {//是直辖市
+                    $this->error('对不起，该区域无设置权限', '', 2);
+                }else{//非直辖市
+                    if($seachcity==4401 || $seachcity==4403){//广深
+                        $this->error('对不起，该区域无设置权限', '', 2);
+                    }else{//非广深
+                        if($seachdistrict) {
+                            $set = $Dealer->where(['dl_sz_sheng' => $seachprov, 'dl_sz_shi' => $seachcity, 'dl_sz_qu' => $seachdistrict])->find();
+                            if ($set) {
+                                $this->error('区域已设置', '', 2);
+                            } else {
+                                $update = $Dealer->where($where)->save($map);
+                                if ($update) {
+                                    $this->success('区域设置成功', U('Mp/Dealer/index'), 2);
+                                } else {
+                                    $this->error('区域设置失败', '', 2);
+                                }
+                            }
+                        }else{
+                            $this->error('区域设置失败', '', 2);
+                        }
+                    }
+                }
+            }
+        }else{//更新为0-0-0
+            $update = $Dealer->where($where)->save($map);
+            if ($update) {
+                $this->success('更新成功', U('Mp/Dealer/index'), 2);
+            } else {
+                $this->error('更新失败', '', 2);
+            }
+
+        }
+
     }
 
 }

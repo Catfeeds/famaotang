@@ -4030,7 +4030,7 @@ class OrdersController extends CommController {
 					$odcount=0; //是否首次下单
 					
 					////=========================================推荐返利 一次性返利
-					if($orderdealer['dl_level']==1 || $orderdealer['dl_level']==2 || $orderdealer['dl_level']==3 || $orderdealer['dl_level']==4){
+					if($orderdealer['dl_level']==1 || $orderdealer['dl_level']==2 || $orderdealer['dl_level']==3 || $orderdealer['dl_level']==4|| $orderdealer['dl_level']==5){
 						
 						//是不是首次下单
 						$map51 = array();
@@ -4093,105 +4093,207 @@ class OrdersController extends CommController {
 							}
 							
 							//如果首次下单 推荐返利
-							if($odcount==1){
-								//如果有直推返利
-								if($dlt_fanli1>0 && $data4['dl_status']==1){
-									$shouxufei=$dlt_fanli1*C('FANLI_SHOUXUFEI');
-									$data5=array();
-									$data5['fl_unitcode'] = session('unitcode');
-									$data5['fl_dlid'] = $data4['dl_id']; //获得返利的代理
-									$data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
-									$data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利) 
-									$data5['fl_money'] = $dlt_fanli1;
-									$data5['fl_shouxufei'] = $shouxufei;
-									$data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
-									$data5['fl_oddlid'] = 0; //订单返利中 下单的代理
-									$data5['fl_odid'] = 0;  //订单返利中 订单流水id
-									$data5['fl_orderid']  = ''; //订单返利中 订单id
-									$data5['fl_proid']  = 0;  //订单返利中 产品id
-									$data5['fl_odblid']  = 0;  //订单返利中 订单关系id
-									$data5['fl_qty']  = 0;  //订单返利中 产品数量
-									$data5['fl_level']  = 1;  //返利的层次，1-第一层返利 2-第二层返利
-									$data5['fl_addtime']  = time();
-									$data5['fl_remark'] ='邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
-									
-									
-									$map5=array();
-									$map5['fl_unitcode'] = session('unitcode');
-									$map5['fl_dlid'] = $data4['dl_id'];
-									$map5['fl_type'] = 1;
-									$map5['fl_level'] = 1;
-									$map5['fl_refedlid'] = $orderdealer['dl_id'];
-									$data6 = $Fanlidetail->where($map5)->find();
-									if(!$data6){
-										$rs5=$Fanlidetail->create($data5,1);
-										if($rs5){
-										   $Fanlidetail->add();
-										}
-									}
-								}
-								
-								//推荐人2级 间推返利
-								if($data4['dl_referee']>0){
-									$map6=array();
-									$data6=array();
-									$map6['dl_unitcode'] = session('unitcode');
-									$map6['dl_id'] = $data4['dl_referee'];  //推荐人的推荐人
-									$map6['dl_status'] = 1;
-									$data6=$Dealer->where($map6)->find();
-									if($data6){
-										$map2=array();
-										$map2['tfl_unitcode']=session('unitcode');
-										$map2['tfl_dltype']=$data6['dl_type'];  //推荐人级别
-										$map2['tfl_tjdltype']=$orderdealer['dl_type'];  //被推荐人级别
-										$dltflinfo2 = $Dltypefanli->where($map2)->find();
-										if($dltflinfo2){
-											$dlt_fanli2=$dltflinfo2['tfl_fanli2'];
-										}else{
-											$dlt_fanli2=0;
-										}
-										
-										if($dlt_fanli2>0){
-											$shouxufei=$dlt_fanli2*C('FANLI_SHOUXUFEI');
-											$data5=array();
-											$data5['fl_unitcode'] = session('unitcode');
-											$data5['fl_dlid'] = $data6['dl_id']; //获得返利的代理
-											$data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
-											$data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利) 
-											$data5['fl_money'] = $dlt_fanli2;
-											$data5['fl_shouxufei'] = $shouxufei;
-											$data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
-											$data5['fl_oddlid'] = 0; //订单返利中 下单的代理
-											$data5['fl_odid'] = 0;  //订单返利中 订单流水id
-											$data5['fl_orderid']  = ''; //订单返利中 订单id
-											$data5['fl_proid']  = 0;  //订单返利中 产品id
-											$data5['fl_odblid']  = 0;  //订单返利中 订单关系id
-											$data5['fl_qty']  = 0;  //订单返利中 产品数量
-											$data5['fl_level']  = 2;  //返利的层次，1-第一层返利 2-第二层返利
-											$data5['fl_addtime']  = time();
-											$data5['fl_remark'] ='代理 '.$data4['dl_name'].'('.$data4['dl_username'].') 邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
-											
-											
-											$map5=array();
-											$map5['fl_unitcode'] = session('unitcode');
-											$map5['fl_dlid'] = $data6['dl_id'];
-											$map5['fl_type'] = 1;
-											$map5['fl_level'] = 2;
-											$map5['fl_refedlid'] = $orderdealer['dl_id'];
-											$data6 = $Fanlidetail->where($map5)->find();
-											if(!$data6){
-												$rs5=$Fanlidetail->create($data5,1);
-												if($rs5){
-												   $Fanlidetail->add();
-												}
-											}
-										}
-									}
-								
-								}
-								
-							}
-						}
+                            if($odcount==1){
+//                                if($data4['dl_level']>$orderdealer['dl_level']){//低级别直推高级别按高级别所需款项的10%返利
+                                    //如果有直推返利
+                                    if($data4['dl_status']==1){
+                                        $data5=array();
+                                        $data5['fl_unitcode'] = session('unitcode');
+                                        $data5['fl_dlid'] = $data4['dl_id']; //获得返利的代理
+                                        $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                        $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                        $data5['fl_money'] = $dlt_fanli1;
+                                        $shouxufei=$dlt_fanli1*C('FANLI_SHOUXUFEI');
+//                                        $data5['fl_money'] = $data['od_total']*C('LOW_HIGH');
+//                                        $shouxufei=$data['od_total']*C('LOW_HIGH')*0.1;
+                                        $data5['fl_shouxufei'] = $shouxufei;
+                                        $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+                                        $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+                                        $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+                                        $data5['fl_orderid']  = ''; //订单返利中 订单id
+                                        $data5['fl_proid']  = 0;  //订单返利中 产品id
+                                        $data5['fl_odblid']  = 0;  //订单返利中 订单关系id
+                                        $data5['fl_qty']  = 0;  //订单返利中 产品数量
+                                        $data5['fl_level']  = 1;  //返利的层次，1-第一层返利 2-第二层返利
+                                        $data5['fl_addtime']  = time();
+                                        $data5['fl_remark'] ='邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
+
+
+                                        $map5=array();
+                                        $map5['fl_unitcode'] = session('unitcode');
+                                        $map5['fl_dlid'] = $data4['dl_id'];
+                                        $map5['fl_type'] = 1;
+                                        $map5['fl_level'] = 1;
+                                        $map5['fl_refedlid'] = $orderdealer['dl_id'];
+                                        $data6 = $Fanlidetail->where($map5)->find();
+                                        if(!$data6){
+                                            $rs5=$Fanlidetail->create($data5,1);
+                                            if($rs5){
+                                                $Fanlidetail->add();
+                                            }
+                                        }
+                                    }
+
+                                    //推荐人2级 间推返利
+                                    if($data4['dl_referee']>0){
+                                        $map6=array();
+                                        $data6=array();
+                                        $map6['dl_unitcode'] = session('unitcode');
+                                        $map6['dl_id'] = $data4['dl_referee'];  //推荐人的推荐人
+                                        $map6['dl_status'] = 1;
+                                        $data6=$Dealer->where($map6)->find();
+                                        if($data6){
+                                            $map2=array();
+                                            $map2['tfl_unitcode']=session('unitcode');
+                                            $map2['tfl_dltype']=$data6['dl_type'];  //推荐人级别
+                                            $map2['tfl_tjdltype']=$orderdealer['dl_type'];  //被推荐人级别
+                                            $dltflinfo2 = $Dltypefanli->where($map2)->find();
+                                            if($dltflinfo2){
+                                                $dlt_fanli2=$dltflinfo2['tfl_fanli2'];
+                                            }else{
+                                                $dlt_fanli2=0;
+                                            }
+
+                                            if($dlt_fanli2>0){
+                                                $shouxufei=$dlt_fanli2*C('FANLI_SHOUXUFEI');
+                                                $data5=array();
+                                                $data5['fl_unitcode'] = session('unitcode');
+                                                $data5['fl_dlid'] = $data6['dl_id']; //获得返利的代理
+                                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                                $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                                $data5['fl_money'] = $dlt_fanli2;
+                                                $data5['fl_shouxufei'] = $shouxufei;
+                                                $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+                                                $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+                                                $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+                                                $data5['fl_orderid']  = ''; //订单返利中 订单id
+                                                $data5['fl_proid']  = 0;  //订单返利中 产品id
+                                                $data5['fl_odblid']  = 0;  //订单返利中 订单关系id
+                                                $data5['fl_qty']  = 0;  //订单返利中 产品数量
+                                                $data5['fl_level']  = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                                $data5['fl_addtime']  = time();
+                                                $data5['fl_remark'] ='代理 '.$data4['dl_name'].'('.$data4['dl_username'].') 邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
+
+
+                                                $map5=array();
+                                                $map5['fl_unitcode'] = session('unitcode');
+                                                $map5['fl_dlid'] = $data6['dl_id'];
+                                                $map5['fl_type'] = 1;
+                                                $map5['fl_level'] = 2;
+                                                $map5['fl_refedlid'] = $orderdealer['dl_id'];
+                                                $data6 = $Fanlidetail->where($map5)->find();
+                                                if(!$data6){
+                                                    $rs5=$Fanlidetail->create($data5,1);
+                                                    if($rs5){
+                                                        $Fanlidetail->add();
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+//                                }else{ //高级别直推低级别、平推（按正常返利）
+//                                    //如果有直推返利
+//                                    if($dlt_fanli1>0 && $data4['dl_status']==1){
+//                                        $shouxufei=$dlt_fanli1*C('FANLI_SHOUXUFEI');
+//                                        $data5=array();
+//                                        $data5['fl_unitcode'] = session('unitcode');
+//                                        $data5['fl_dlid'] = $data4['dl_id']; //获得返利的代理
+//                                        $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+//                                        $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+//                                        $data5['fl_money'] = $dlt_fanli1;
+//                                        $data5['fl_shouxufei'] = $shouxufei;
+//                                        $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+//                                        $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+//                                        $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+//                                        $data5['fl_orderid']  = ''; //订单返利中 订单id
+//                                        $data5['fl_proid']  = 0;  //订单返利中 产品id
+//                                        $data5['fl_odblid']  = 0;  //订单返利中 订单关系id
+//                                        $data5['fl_qty']  = 0;  //订单返利中 产品数量
+//                                        $data5['fl_level']  = 1;  //返利的层次，1-第一层返利 2-第二层返利
+//                                        $data5['fl_addtime']  = time();
+//                                        $data5['fl_remark'] ='邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
+//
+//
+//                                        $map5=array();
+//                                        $map5['fl_unitcode'] = session('unitcode');
+//                                        $map5['fl_dlid'] = $data4['dl_id'];
+//                                        $map5['fl_type'] = 1;
+//                                        $map5['fl_level'] = 1;
+//                                        $map5['fl_refedlid'] = $orderdealer['dl_id'];
+//                                        $data6 = $Fanlidetail->where($map5)->find();
+//                                        if(!$data6){
+//                                            $rs5=$Fanlidetail->create($data5,1);
+//                                            if($rs5){
+//                                                $Fanlidetail->add();
+//                                            }
+//                                        }
+//                                    }
+//
+//                                    //推荐人2级 间推返利
+//                                    if($data4['dl_referee']>0){
+//                                        $map6=array();
+//                                        $data6=array();
+//                                        $map6['dl_unitcode'] = session('unitcode');
+//                                        $map6['dl_id'] = $data4['dl_referee'];  //推荐人的推荐人
+//                                        $map6['dl_status'] = 1;
+//                                        $data6=$Dealer->where($map6)->find();
+//                                        if($data6){
+//                                            $map2=array();
+//                                            $map2['tfl_unitcode']=session('unitcode');
+//                                            $map2['tfl_dltype']=$data6['dl_type'];  //推荐人级别
+//                                            $map2['tfl_tjdltype']=$orderdealer['dl_type'];  //被推荐人级别
+//                                            $dltflinfo2 = $Dltypefanli->where($map2)->find();
+//                                            if($dltflinfo2){
+//                                                $dlt_fanli2=$dltflinfo2['tfl_fanli2'];
+//                                            }else{
+//                                                $dlt_fanli2=0;
+//                                            }
+//
+//                                            if($dlt_fanli2>0){
+//                                                $shouxufei=$dlt_fanli2*C('FANLI_SHOUXUFEI');
+//                                                $data5=array();
+//                                                $data5['fl_unitcode'] = session('unitcode');
+//                                                $data5['fl_dlid'] = $data6['dl_id']; //获得返利的代理
+//                                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+//                                                $data5['fl_type'] = 1; // 返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+//                                                $data5['fl_money'] = $dlt_fanli2;
+//                                                $data5['fl_shouxufei'] = $shouxufei;
+//                                                $data5['fl_refedlid'] = $orderdealer['dl_id']; //推荐返利中被推荐的代理
+//                                                $data5['fl_oddlid'] = 0; //订单返利中 下单的代理
+//                                                $data5['fl_odid'] = 0;  //订单返利中 订单流水id
+//                                                $data5['fl_orderid']  = ''; //订单返利中 订单id
+//                                                $data5['fl_proid']  = 0;  //订单返利中 产品id
+//                                                $data5['fl_odblid']  = 0;  //订单返利中 订单关系id
+//                                                $data5['fl_qty']  = 0;  //订单返利中 产品数量
+//                                                $data5['fl_level']  = 2;  //返利的层次，1-第一层返利 2-第二层返利
+//                                                $data5['fl_addtime']  = time();
+//                                                $data5['fl_remark'] ='代理 '.$data4['dl_name'].'('.$data4['dl_username'].') 邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
+//
+//
+//                                                $map5=array();
+//                                                $map5['fl_unitcode'] = session('unitcode');
+//                                                $map5['fl_dlid'] = $data6['dl_id'];
+//                                                $map5['fl_type'] = 1;
+//                                                $map5['fl_level'] = 2;
+//                                                $map5['fl_refedlid'] = $orderdealer['dl_id'];
+//                                                $data6 = $Fanlidetail->where($map5)->find();
+//                                                if(!$data6){
+//                                                    $rs5=$Fanlidetail->create($data5,1);
+//                                                    if($rs5){
+//                                                        $Fanlidetail->add();
+//                                                    }
+//                                                }
+//                                            }
+//                                        }
+//
+//                                    }
+//
+//                                }
+                            }
+
+                        }
 					}
 					
 					//=========================================订单返利
@@ -4303,7 +4405,7 @@ class OrdersController extends CommController {
                                                                 $dlt_minnum = $order_dltype['dlt_minnum'];
                                                                 if ($data['od_total'] <= $dlt_minnum) {
 //                                                                      正常返利
-                                                                    $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty'];
+                                                                    $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty']*C('B_MONEY');
                                                                     $shouxufei = $pfl_fanli1sum * C('FANLI_SHOUXUFEI');
 
                                                                     $data5 = array();
@@ -4335,7 +4437,7 @@ class OrdersController extends CommController {
                                                                         $a = intval($c_num / $vv['oddt_dlprice']);
                                                                         $vv['oddt_qty'] = $vv['oddt_qty'] - $a;
 
-                                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty'];
+                                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty']*C('B_MONEY');
                                                                         $shouxufei = $pfl_fanli1sum * C('FANLI_SHOUXUFEI');
 
                                                                         $data5 = array();
@@ -4363,7 +4465,7 @@ class OrdersController extends CommController {
                                                                         break;
 
                                                                     } else {
-                                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty'];
+                                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty']*C('B_MONEY');
                                                                         $shouxufei = $pfl_fanli1sum * C('FANLI_SHOUXUFEI');
 
                                                                         $data5 = array();
@@ -4394,7 +4496,7 @@ class OrdersController extends CommController {
                                                                 }
 
                                                             } else {
-                                                                $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty'];
+                                                                $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty']*C('B_MONEY');
                                                                 $shouxufei = $pfl_fanli1sum * C('FANLI_SHOUXUFEI');
 
                                                                 $data5 = array();
@@ -4422,8 +4524,8 @@ class OrdersController extends CommController {
                                                             }
                                                         }
                                                     } else {
-                                                        //正常返利
-                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty'];
+                                                        //其他级别正常返利
+                                                        $pfl_fanli1sum = $pfl_fanli1 * $vv['oddt_qty']*C('B_MONEY');
                                                         $shouxufei = $pfl_fanli1sum * C('FANLI_SHOUXUFEI');
 
                                                         $data5 = array();
@@ -4503,7 +4605,7 @@ class OrdersController extends CommController {
                                                                 $dlt_minnum = $order_dltype['dlt_minnum'];
                                                                 if ($data['od_total'] <= $dlt_minnum) {
 //                                                                        正常返利
-                                                                    $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty'];
+                                                                    $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty']*C('A_MONEY');
                                                                     $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
 
                                                                     $data5 = array();
@@ -4534,7 +4636,7 @@ class OrdersController extends CommController {
                                                                         $c_num = $order_num2 - $dlt_minnum;//超出的订单额
                                                                         $a = intval($c_num / $vv['oddt_dlprice']);
                                                                         $vv['oddt_qty'] = $vv['oddt_qty'] - $a;
-                                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty'];
+                                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty']*C('A_MONEY');
                                                                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
 
                                                                         $data5 = array();
@@ -4562,7 +4664,7 @@ class OrdersController extends CommController {
                                                                         break;
                                                                     } else {
 //                                                                            正常返利
-                                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty'];
+                                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty']*C('A_MONEY');
                                                                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
 
                                                                         $data5 = array();
@@ -4593,7 +4695,7 @@ class OrdersController extends CommController {
 
                                                             } else {
                                                                 //正常返利
-                                                                $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty'];
+                                                                $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty']*C('A_MONEY');
                                                                 $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
                                                                 $data5 = array();
                                                                 $data5['fl_unitcode'] = session('unitcode');
@@ -4620,8 +4722,8 @@ class OrdersController extends CommController {
                                                             }
                                                         }
                                                     } else {
-                                                        //正常返利
-                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty'];
+                                                        //其他级别正常返利
+                                                        $pfl_fanli2sum = $pfl_fanli2 * $vv['oddt_qty']*C('A_MONEY');
                                                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
 
                                                         $data5 = array();
@@ -4652,6 +4754,39 @@ class OrdersController extends CommController {
                                             }
                                         }
                                     }
+//                                    补货人的返利
+                                    foreach($oddetail as $kk=>$vv) {
+			 						    if($orderdealer['dl_level']==5){
+                                            $pfl_fanli3=12;
+                                        }else{
+                                            $pfl_fanli3=14;
+                                        }
+                                        $pfl_fanli3sum = $pfl_fanli3 * $vv['oddt_qty']*C('C_MONEY');
+                                        $shouxufei = $pfl_fanli3sum * C('FANLI_SHOUXUFEI');
+
+                                        $data5 = array();
+                                        $data5['fl_unitcode'] = session('unitcode');
+                                        $data5['fl_dlid'] = $orderdealer['dl_id']; //获得返利的代理
+                                        $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                        $data5['fl_type'] = 2; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                        $data5['fl_money'] = $pfl_fanli3sum;
+                                        $data5['fl_shouxufei'] = $shouxufei;
+                                        $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                        $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                        $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                        $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                        $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                        $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                        $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                        $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+                                        $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                        $data5['fl_addtime'] = time();
+                                        $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                        $rs5 = $Fanlidetail->create($data5, 1);
+                                        if ($rs5) {
+                                            $Fanlidetail->add();
+                                        }
+                                    }
 
 			 					}	
 			 				}
@@ -4659,8 +4794,73 @@ class OrdersController extends CommController {
 				    }
 				}
 			 	//返利 end
-	
+//                 区域服务费
 
+               //升级
+                 $Dltype=M('Dltype');
+                 $Dealer=M('Dealer');
+			 	$dlt_type3= $Dltype->where(['dlt_level'=>3])->find();
+                 $dlt_id3=$dlt_type3['dlt_id'];
+			 	$dlt_type4= $Dltype->where(['dlt_level'=>4])->find();
+                 $dlt_id4=$dlt_type4['dlt_id'];
+//                 1、累计补货升级
+                 $upgrade=[];
+                 $upgrade=$Orders->where(['od_state'=>3,'od_oddlid'=>$orderdealer['dl_id']])->select();
+                 foreach ($upgrade as $k=>$v){
+                     $upgrade1= $Orderdetail->where(['oddt_odid'=>$v['od_id']])->select();
+                     $upgrade[$k]['upgrade1']=$upgrade1;
+                 }
+                 $upgrade_num=0;
+                 foreach($upgrade as $k=>$v){
+                     foreach ($v['upgrade1'] as $k1=>$v1){
+                         $upgrade_num+=$v1['oddt_qty'];
+                     }
+                 }
+//                 代理商
+                 if($orderdealer['dl_level']==5 ){
+                     if($upgrade_num>=54&&$upgrade_num<90){
+                         // 升到合伙人
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>4,'dl_type'=>$dlt_id4]);
+                     }
+                     if($upgrade_num>=90){
+                         // 升到工作室
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+                     }
+
+                 }
+//                 合伙人
+                 if($orderdealer['dl_level']==4 ){
+                     if($upgrade_num>=90){
+                         // 升到工作室
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+                     }
+
+                 }
+//                 2、一次性进货升级
+                 $upgrade2= $Orderdetail->where(['oddt_odid'=>$data['od_id']])->select();
+                 $upgrade_num2=0;
+                 foreach ($upgrade2 as $k=>$v){
+                     $upgrade_num2+=$v['oddt_qty'];
+                 }
+//                 代理商
+                 if($orderdealer['dl_level']==5){
+                     if($upgrade_num2>=36&&$upgrade_num2<=72){
+                         // 升到合伙人
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>4,'dl_type'=>$dlt_id4]);
+                     }
+                     if($upgrade_num2>=72){
+                         // 升到工作室
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+                     }
+                 }
+//                 合伙人
+                 if($orderdealer['dl_level']==4 ){
+                     if($upgrade_num>=72){
+                         // 升到工作室
+                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+                     }
+
+                 }
 			 	//订单操作日志 begin
 			 	$odlog_arr=array(
 			 				'odlg_unitcode'=>session('unitcode'),  

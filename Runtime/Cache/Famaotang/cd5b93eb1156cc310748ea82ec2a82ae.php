@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-		<link rel="shortcut icon" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
+		<link rel="shortcut icon" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/icon_min.png">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<meta name="format-detection" content="telephone=no,email=no,adress=no">
 		<title>
 			代理</title>
-		<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
-<link rel="stylesheet" type="text/css" href="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
+		<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/sm.min.css">
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/swiper.min.css"/>
+<link rel="stylesheet" type="text/css" href="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/css/demo.css"/>
 
 
 		<style type="text/css">
@@ -99,7 +99,7 @@
 					</li>
 					<li>
 						<a class="tab-item" id="fw_search" href="#">
-							<img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
+							<img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/fangwei_icon.png">
 						</a>
 					</li>
 					<li>
@@ -119,7 +119,7 @@
 			<div class="content">
 				<!-- teamtop -->
 				<div class="top-img">
-					<img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/team_top.jpg">
+					<img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/team_top.jpg">
 				</div>
 				<!-- searchbar -->
 				<!--<div class="bar1 bar-header-secondary">
@@ -135,7 +135,7 @@
 				<div class="list-block" style="margin-top:.25rem;margin-bottom: 0rem;">
 					<ul>
 						<li class="item-content item-link" style="display: none">
-							<div class="item-media"><img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/dealer_up_icon.png" style="width:1rem;height:1rem;"></div>
+							<div class="item-media"><img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/dealer_up_icon.png" style="width:1rem;height:1rem;"></div>
 							<div class="item-inner">
 								<div class="item-title">
 									<h1>已升级代理</h1></div>
@@ -156,7 +156,7 @@
 							</div>
 						</li>
 						<li class="item-content item-link" id="dl_tuijian">
-							<div class="item-media"><img src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/dealer_tj_icon.png" style="width:1rem;height:1rem;"></div>
+							<div class="item-media"><img src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/dealer_tj_icon.png" style="width:1rem;height:1rem;"></div>
 							<div class="item-inner">
 								<div class="item-title">
 									<h1>我推荐的代理</h1></div>
@@ -192,7 +192,7 @@
 					<ul>
 						<?php if(is_array($dl_list)): foreach($dl_list as $key=>$item): ?><li>
 								<a href="<?php echo U('./'.C('MODULE_NAME').'/Dealer/applylist/ls_status/0');?>" class="item-link item-content">
-									<div class="item-media"><img class="kl-circle kl-img-thumbnail" src="/famaotang/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:2rem; border-radius: 50%;" onerror="this.src='/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'"></div>
+									<div class="item-media"><img class="kl-circle kl-img-thumbnail" src="/Public/uploads/mobi/<?php echo ($item["dl_wxheadimg"]); ?>" style="width:2rem; border-radius: 50%;" onerror="this.src='/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/static/head_icon.png'"></div>
 									<div class="item-inner">
 										<div class="item-subtitle between-horizontally">
 											<span style="color:#7e7e7e"><h1><?php echo ($item["dl_name"]); ?></h1></span><span style="color:#c1c1c1"><?php echo (date('Y-m-d',$item["dl_addtime"])); ?></span></div>
@@ -205,10 +205,10 @@
 			</div>
 		</div>
 	</body>
-	 <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
- <script type="text/javascript" src="/famaotang/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
+	 <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/app.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/swiper.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/zepto.min.js" charset="utf-8"></script>
+ <script type="text/javascript" src="/Public/<?php echo C('RESOURCE_ROOT_NAME');?>/js/sm.min.js" charset="utf-8"></script>
 
 
 	<script type="text/javascript">

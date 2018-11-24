@@ -2,20 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>经销商管理</title>
+<title>图片管理</title>
 <link rel="stylesheet" type="text/css" href="/Public/mp/css/style.css" />
 <script type="text/javascript" src="/Public/mp/js/jquery.min.js"></script>
-<script language="JavaScript">
-<!--
-function toggleCollapse(z,obj){
-  $(z).toggle();
-  if($(z).css("display")=="none"){
-      $(obj).attr("src","/Public/mp/static/menu_plus.gif"); 
-  }else{
-      $(obj).attr("src","/Public/mp/static/menu_minus.gif"); 
-  }
-}
-//-->
+<script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $(".copylinks").click(function(){
+                var url=$(this).attr("rel");
+				copy_code(url);
+			 });
+		 });
+
+
+function copy_code(copyText){
+	if (window.clipboardData)
+	{
+	window.clipboardData.setData("Text", copyText)
+	alert('复制成功');
+	}
+	else
+	{
+	 prompt("请按Ctrl+C复制图片地址:",copyText); 
+	}
+} 		 
 </script>
 </head>
 <body>
@@ -181,38 +190,37 @@ function nemuclose(z,obj){
 </div>
 <div class="rightcontent">
 <div class="content_nav" >
-<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Dealer/index');?>">经销商管理</A>　&gt;　<A href="#">经销商架构树</A></div>
-<div class="nav_r"></div>
+<div class="nav_l"><a href="<?php echo U('Mp/Index/index');?>">首页</a>　&gt;　<A href="<?php echo U('Mp/Jfmobi/piclist');?>">图片管理</A></div>
+<div class="nav_r"><a href="<?php echo U('Mp/Jfmobi/picadd');?>">添加图片</a></div>
 </div>
-<div class="height10"></div>
-<div style="float:left; width:40%">
-<form action="<?php echo U('Mp/Dealer/searchtree');?>"   method="post" name="fmmm"  >
-<input    type="text" size="30" maxlength="30"  name="dlusername"  class="input"  onfocus="if(this.value=='请填写代理账号')this.value=''"   value="请填写代理账号"   style="color:#999999"   >   <input type="submit" name="Submit" value="搜 索"  ></form>
-</div>
-<div style="float:right; width:50%; text-align:right">
-</div>
+
 <div class="height10"></div>
 <div class="content">
-<div class="tree_l" >
-<div class="tree_t">结构树</div>
-<div style="padding:10px 10px 10px 0">
-<ul class="treelist" >
-<?php echo ($list_html); ?>
-</ul>
+<table class="table_results" >
+<thead><tr>
+<th  width="5%" ><span>ID</span></th>
+<th  width="15%" ><span>图</span></th>
+<th  width="20%" ><span>图片说明</span></th>
+<th  width="20%" ><span>文件名</span></th>
+<th  width="20%" ><span>修改时间</span></th>
+<th  width="20%" ><span>操作</span></th>
+</tr></thead>
+<tbody>
+<?php if(is_array($list)): foreach($list as $key=>$item): ?><tr class="<?php echo ($key%2 == 0?'odd':'even'); ?>" >
+<td class="data"><span><?php echo ($item["pics_id"]); ?></span></td>
+<td class="data"><span><?php echo ($item["pics_name_str"]); ?></span></td>
+<td class="data"><span><?php echo ($item["pics_title"]); ?></span></td>
+<td class="data"><span><?php echo ($item["pics_name2"]); ?></span></td>
+<td class="data"><span><?php echo (date('Y-m-d H:i:s',$item["pics_addtime"])); ?></span></td>
+<td class="data"><span><a  href="javascript:" rel="http://<?php echo ($web_host); ?>/Public/uploads/mobi/<?php echo ($item["pics_name"]); ?>" class="copylinks" >复制图片链接</a> <a href="<?php echo U('Mp/Jfmobi/picedit?pics_id='.$item['pics_id'].'');?>" >修改</a> <a  href="#" onClick="javascript:var truthBeTold = window.confirm('该操作将彻底删除,谨慎操作!'); if (truthBeTold) window.location.href='<?php echo U('Mp/Jfmobi/delete?pics_id='.$item['pics_id'].'');?>';" >删除</a></span></td>
+</tr><?php endforeach; endif; ?>
+</tbody>
+</table>
 <div class="height10"></div>
 <table class="page" cellpadding="0" cellspacing="0"><tbody>
 <tr>
 <td><?php echo ($page); ?></td>
 </tr></tbody></table>
-<div class="height10"></div>
-</div>
-</div>
-<div class="tree_r"  >
-<div class="tree_t"  >详细资料</div>
-<div style="padding:5px" >
-<iframe src="<?php echo U('Mp/Dealer/treedetail');?>" allowtransparency="true" style="background-color=transparent" title="test" frameborder="0" width="373" height="900"   scrolling="auto" name="dealerframe"></iframe>
-</div>
-</div>
 </div>
 <div class="height20"></div>
 </div>

@@ -142,13 +142,19 @@ class OrdersController extends CommController {
 			$dlyodcount=0;
 		}
 //		判断是否显示同区域发货按钮
-        $map20['dl_id']=session('jxuser_id');
-        $dealer=$Dealer->where($map20)->find();
-        if($dealer['dl_sz_sheng']!=0&& $dealer['dl_sz_shi']!=0&&$dealer['dl_level']<3){
-                $show=1;
-        }else{
-            $show=0;
-        }
+//        $map20['dl_id']=session('jxuser_id');
+//        $dealer=$Dealer->where($map20)->find();
+//        if($dealer['dl_level']==1 && $dealer['dl_sz_sheng']!=0){
+//            $show=1;
+//        }
+//        if($dealer['dl_level']==2 && $dealer['dl_sz_qu']!=0){
+//            $show=1;
+//        }
+//        if($dealer['dl_sz_sheng']!=0&& $dealer['dl_sz_shi']!=0&&$dealer['dl_level']<3){
+//                $show=1;
+//        }else{
+//            $show=0;
+//        }
 
 //        dump($show);die();
 		$this->assign('mysodcount', $mysodcount);
@@ -4778,12 +4784,12 @@ class OrdersController extends CommController {
 		
 ////		最低补货量判断
 ////        dump($proqty);die();
-//		foreach($proqty as $kk=>$vv){
-//			if($vv['pri_minimum']>$vv['qty']){
-//				$this->error('对不起，产品'.$vv['pro_name'].' 的最低补货量为：'.$vv['pri_minimum'].'',U(C('MODULE_NAME').'/Orders/shopcart'),2);
-//				exit;
-//			}
-//		}
+		foreach($proqty as $kk=>$vv){
+			if($vv['pri_minimum']>$vv['qty']){
+				$this->error('对不起，产品'.$vv['pro_name'].' 的最低补货量为：'.$vv['pri_minimum'].'',U(C('MODULE_NAME').'/Orders/shopcart'),2);
+				exit;
+			}
+		}
 		
 		
 		

@@ -12,7 +12,8 @@
 <div class="logo">
 <?php if(!empty($qypic)): ?><img src="/Public/uploads/product/<?php echo ($qypic); ?>"  height="40" style="vertical-align:middle" />
 <?php else: ?> 
-<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" /><?php endif; ?>
+<!--<img src="/Public/mp/static/logo0.png"  height="40" style="vertical-align:middle" />-->
+    <div style="font-size: 18px;padding-top: 10px">代理商管理系统</div><?php endif; ?>
 </div>
 <div class="topright">您好,<?php echo ($qyuser); ?>　<a href="<?php echo U('Mp/Login/quit');?>" style="color:#fff;" >退出系统</a> </div>
 </div>
