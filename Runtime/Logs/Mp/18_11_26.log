@@ -1,0 +1,520 @@
+[ 2018-11-26T14:43:43+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.021001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.021001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 137 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 137 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 137 AND `ship_oddtid` = 223 AND `ship_dealer` = 51 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T14:45:36+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 137 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 137 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 137 AND `ship_oddtid` = 223 AND `ship_dealer` = 51 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T14:53:12+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.029002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.029002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 137 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 137 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 137 AND `ship_oddtid` = 223 AND `ship_dealer` = 51 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T15:08:34+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.020002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.020002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 138 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 138 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 138 AND `ship_oddtid` = 227 AND `ship_dealer` = 51 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T15:38:56+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.032002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.032002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 138 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 138 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 138 AND `ship_oddtid` = 227 AND `ship_dealer` = 51 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T15:53:27+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.015001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 139 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 139 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 139 AND `ship_oddtid` = 231 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T15:59:38+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.014001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.014001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 139 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 139 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 139 AND `ship_oddtid` = 231 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:01:11+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.019001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.019001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 139 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 139 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 139 AND `ship_oddtid` = 231 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:04:10+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.016001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 140 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 140 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 140 AND `ship_oddtid` = 232 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:09:58+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 141 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 141 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 141 AND `ship_oddtid` = 236 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T16:14:38+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 141 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 141 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 141 AND `ship_oddtid` = 236 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:19:56+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.015001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 141 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 141 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 141 AND `ship_oddtid` = 236 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T16:24:25+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 142 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 142 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 142 AND `ship_oddtid` = 240 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T16:27:58+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.016001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.016001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 142 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 142 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 142 AND `ship_oddtid` = 240 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:28:28+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.013001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.013001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 142 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 142 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 142 AND `ship_oddtid` = 240 AND `ship_dealer` = 50 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T16:46:53+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 143 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 143 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 143 AND `ship_oddtid` = 244 AND `ship_dealer` = 55 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T16:48:34+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.025001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.025001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 144 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 144 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 144 AND `ship_oddtid` = 248 AND `ship_dealer` = 55 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T17:11:24+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.013001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.014001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 145 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 145 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 145 AND `ship_oddtid` = 251 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T17:15:29+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.030001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.030001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 145 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 145 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 145 AND `ship_oddtid` = 251 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T17:19:54+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 146 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 146 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 146 AND `ship_oddtid` = 254 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T17:21:14+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 147 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0120s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 147 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 147 AND `ship_oddtid` = 256 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0030s ]
+
+[ 2018-11-26T17:27:54+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.023001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.023001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 147 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 147 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 147 AND `ship_oddtid` = 256 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T17:31:08+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.024002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.024002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 147 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 147 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 147 AND `ship_oddtid` = 256 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-11-26T17:34:16+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.014000s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.014000s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 148 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 148 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 148 AND `ship_oddtid` = 257 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-11-26T17:35:34+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0000s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.026002s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.026002s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 149 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 149 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 149 AND `ship_oddtid` = 258 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-11-26T17:38:09+08:00 ] 127.0.0.1 /Mp/Orders/odfinishship
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8192] mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead D:\Aroot\myphp_www\PHPTutorial\WWW\famaotang\Tp\Library\Think\Session\Driver\Db.class.php 第 95 行.
+INFO: [ action_begin ] --START--
+SQL: SHOW COLUMNS FROM `fw_denyip` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_denyip`  [ RunTime:0.0010s ]
+INFO: Run Home\Behaviors\DenyipsBehavior [ RunTime:0.015001s ]
+INFO: [ action_begin ] --END-- [ RunTime:0.015001s ]
+SQL: SHOW COLUMNS FROM `fw_orders` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orders` WHERE `od_unitcode` = 3183 AND `od_id` = 150 AND `od_rcdlid` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `fw_orderdetail` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_product` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `fw_shipment` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `fw_dealer` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `fw_orderdetail` WHERE `oddt_unitcode` = 3183 AND `oddt_odid` = 150 ORDER BY oddt_id DESC LIMIT 100   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `fw_product` WHERE `pro_id` = 1 AND `pro_unitcode` = '3183' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(ship_proqty) AS tp_sum FROM `fw_shipment` WHERE `ship_pro` = 1 AND `ship_unitcode` = '3183' AND `ship_odid` = 150 AND `ship_oddtid` = 259 AND `ship_dealer` = 56 LIMIT 1   [ RunTime:0.0010s ]
+

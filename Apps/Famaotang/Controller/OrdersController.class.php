@@ -4193,9 +4193,9 @@ class OrdersController extends CommController {
 			exit;
 		}
 		
-		if($dl_level>4){
-			$this->error('对不起，合伙人以上才允许下单','',1);
-		}
+//		if($dl_level>4){
+//			$this->error('对不起，合伙人以上才允许下单','',1);
+//		}
 		
         $Shopcart = M('Shopcart');
 		
@@ -4690,9 +4690,9 @@ class OrdersController extends CommController {
 			exit;
 		}
 		
-		if($dl_level>4){
-			$this->error('对不起，合伙人以上才允许下单','',1);
-		}
+//		if($dl_level>4){
+//			$this->error('对不起，合伙人以上才允许下单','',1);
+//		}
 		
         $Shopcart = M('Shopcart');
 		$Orders = M('Orders');
@@ -5261,7 +5261,7 @@ class OrdersController extends CommController {
 
 	
 		$orderarr['od_oddlid']=session('jxuser_id');  //下单代理
-		$orderarr['od_rcdlid']=$dl_belong;  //接收订单的代理id 0则为总公司
+		$orderarr['od_rcdlid']=0;  //接收订单的代理id 0则为总公司
 		$orderarr['od_virtualstock']=0;
 		$orderarr['od_fugou']=0;
 		$orderarr['od_dltype']=$dl_type; //下单时代理级别

@@ -1268,7 +1268,7 @@ class DealerController extends CommController {
 			//邀请级别1
 			$map3=array();
 			$map3['dlt_unitcode']=$this->qy_unitcode;
-			$map3['dlt_level']=array('IN','1,2,3,4');
+			$map3['dlt_level']=array('IN','1,2,3,4,5');
 			$dltypelist = $Dltype->where($map3)->field('dlt_id,dlt_name,dlt_level')->order('dlt_level ASC,dlt_id ASC')->select();
 
 			$qy_fwkey=$this->qy_fwkey;

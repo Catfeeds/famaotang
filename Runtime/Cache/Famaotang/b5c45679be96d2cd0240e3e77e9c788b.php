@@ -209,20 +209,22 @@
 													<div class="item-after"><span class="kl-badge"><?php echo ($myyodcount); ?></span></div><?php endif; ?>
 											</div>
 										</li>
-										<?php if($show == 1): ?><li class="item-content item-link">
-												<div class="item-media"><i class="iconfont icon-che1" style="font-size:1rem; color: #006db8;line-height: 1rem;"></i></div>
-												<div class="item-inner">
-													<div class="item-title">
-														<h1>同区域发货</h1>
-													</div>
-													<!--<?php if($myfodcount > 0): ?>-->
-													<!--<div class="item-after"><span class="kl-badge" style="background-color:red;"><?php echo ($myfodcount); ?></span></div>-->
-													<!--<?php else: ?>-->
-													<!--<div class="item-after"><span class="kl-badge" ><?php echo ($myfodcount); ?></span></div>-->
-													<!--<?php endif; ?>-->
 
-												</div>
-											</li><?php endif; ?>
+											<!--<li class="item-content item-link">-->
+												<!--<div class="item-media"><i class="iconfont icon-che1" style="font-size:1rem; color: #006db8;line-height: 1rem;"></i></div>-->
+												<!--<div class="item-inner">-->
+													<!--<div class="item-title">-->
+														<!--<h1>同区域发货</h1>-->
+													<!--</div>-->
+													<!--&lt;!&ndash;<?php if($myfodcount > 0): ?>&ndash;&gt;-->
+													<!--&lt;!&ndash;<div class="item-after"><span class="kl-badge" style="background-color:red;"><?php echo ($myfodcount); ?></span></div>&ndash;&gt;-->
+													<!--&lt;!&ndash;<?php else: ?>&ndash;&gt;-->
+													<!--&lt;!&ndash;<div class="item-after"><span class="kl-badge" ><?php echo ($myfodcount); ?></span></div>&ndash;&gt;-->
+													<!--&lt;!&ndash;<?php endif; ?>&ndash;&gt;-->
+
+												<!--</div>-->
+											<!--</li>-->
+
 									</ul>
 								</div>
 								<!-- dreanlist -->

@@ -1133,34 +1133,34 @@ class OrdersController extends CommController {
 				$list[$k]['od_state_str']='未知';
 			}
            //订单过滤开始
-            $map20['dl_sz_sheng']=$v['od_sheng'];
-            $map20['dl_sz_shi']=$v['od_shi'];
-            $map20['dl_sz_qu']=$v['od_qu'];
-            $map20['dl_status']=1;
+//            $map20['dl_sz_sheng']=$v['od_sheng'];
+//            $map20['dl_sz_shi']=$v['od_shi'];
+//            $map20['dl_sz_qu']=$v['od_qu'];
+//            $map20['dl_status']=1;
 
-            $data20=$Dealer->where($map20)->find();
-            if($data20){//有设置
-                 if($data20['dl_id']==$v['od_fhdlid']){
-                     $caozuostr='<a href="'.U('./Mp/Orders/cporderdetail?od_id='.$v['od_id'].'').'"  >订单详细</a><br>';
-
-                 }else{
-                     $caozuostr='<a href="'.U('./Mp/Orders/cporderdetail?od_id='.$v['od_id'].'').'"  >订单详细</a><br>';
-                     //确认订单
-                     if($v['od_state']==0){
-                         $caozuostr.='<a href="'.U('./Mp/Orders/cancelorder?state=1&od_id='.$v['od_id'].'').'"  >确认订单</a><br>';
-                     }
-
-                     //取消订单
-                     if($v['od_state']==0 || $v['od_state']==1 ){
-                         $caozuostr.='<a href="'.U('./Mp/Orders/cancelorder?state=9&od_id='.$v['od_id'].'').'"  >取消订单</a><br>';
-                     }
-
-                     //删除订单 只有已取消的才能删除
-                     if($v['od_state']==9 ){
-                         $caozuostr.='<a   href="#"  onClick="javascript:var truthBeTold = window.confirm(\'该操作将彻底删除,谨慎操作!\'); if (truthBeTold) window.location.href=\''.U('Mp/Orders/deleteorder?od_id='.$v['od_id']).'\';"  >删除</a> ';
-                     }
-                 }
-            }else{//无设置
+//            $data20=$Dealer->where($map20)->find();
+//            if($data20){//有设置
+//                 if($data20['dl_id']==$v['od_fhdlid']){
+//                     $caozuostr='<a href="'.U('./Mp/Orders/cporderdetail?od_id='.$v['od_id'].'').'"  >订单详细</a><br>';
+//
+//                 }else{
+//                     $caozuostr='<a href="'.U('./Mp/Orders/cporderdetail?od_id='.$v['od_id'].'').'"  >订单详细</a><br>';
+//                     //确认订单
+//                     if($v['od_state']==0){
+//                         $caozuostr.='<a href="'.U('./Mp/Orders/cancelorder?state=1&od_id='.$v['od_id'].'').'"  >确认订单</a><br>';
+//                     }
+//
+//                     //取消订单
+//                     if($v['od_state']==0 || $v['od_state']==1 ){
+//                         $caozuostr.='<a href="'.U('./Mp/Orders/cancelorder?state=9&od_id='.$v['od_id'].'').'"  >取消订单</a><br>';
+//                     }
+//
+//                     //删除订单 只有已取消的才能删除
+//                     if($v['od_state']==9 ){
+//                         $caozuostr.='<a   href="#"  onClick="javascript:var truthBeTold = window.confirm(\'该操作将彻底删除,谨慎操作!\'); if (truthBeTold) window.location.href=\''.U('Mp/Orders/deleteorder?od_id='.$v['od_id']).'\';"  >删除</a> ';
+//                     }
+//                 }
+//            }else{//无设置
                 //允许操作
                 $caozuostr='<a href="'.U('./Mp/Orders/cporderdetail?od_id='.$v['od_id'].'').'"  >订单详细</a><br>';
                 //确认订单
@@ -1177,7 +1177,7 @@ class OrdersController extends CommController {
                 if($v['od_state']==9 ){
                     $caozuostr.='<a   href="#"  onClick="javascript:var truthBeTold = window.confirm(\'该操作将彻底删除,谨慎操作!\'); if (truthBeTold) window.location.href=\''.U('Mp/Orders/deleteorder?od_id='.$v['od_id']).'\';"  >删除</a> ';
                 }
-            }
+//            }
 
             //订单过滤完成
 			
@@ -1480,7 +1480,7 @@ class OrdersController extends CommController {
 						$flarr[$kkk]['dl_sendname_str']='总公司';
 					}
 					
-                    //返利分类 1-推荐返利 2-订单返利 3-销售累计奖 4-按月销售奖 5-团队季度奖 6-人才培育奖 11-提现减少返利 (1-10 增加返利 11-20 减少返利) 
+                    //返利分类 1-推荐返利 2-订单返利 3-销售累计奖 4-按月销售奖 5-团队季度奖 6-人才培育奖 11-提现减少返利 7-区域垫补(1-10 增加返利 11-20 减少返利)
 					if($vvv['fl_type']>=1 && $vvv['fl_type']<=10){
 						$flarr[$kkk]['fl_moneystr']='<span style="color:#000000">+'.number_format($vvv['fl_money'], 2,'.','').'</span>';
 					}else if($vvv['fl_type']>=11 && $vvv['fl_type']<=20){
@@ -1501,7 +1501,10 @@ class OrdersController extends CommController {
 						$flarr[$kkk]['fl_typestr']='团队季度奖';
 					}else if($vvv['fl_type']==6){
 						$flarr[$kkk]['fl_typestr']='人才培育奖';
-					}else if($vvv['fl_type']==11){
+
+					}else if($vvv['fl_type']==7){
+                        $flarr[$kkk]['fl_typestr']='区域垫补';
+                    } else if($vvv['fl_type']==11){
 						$flarr[$kkk]['fl_typestr']='提现减少返利';
 					}else{
 						$flarr[$kkk]['fl_typestr']='未定义';
@@ -4096,7 +4099,7 @@ class OrdersController extends CommController {
                             if($odcount==1){
 //                                if($data4['dl_level']>$orderdealer['dl_level']){//低级别直推高级别按高级别所需款项的10%返利
                                     //如果有直推返利
-                                    if($data4['dl_status']==1){
+                                    if($data4['dl_status']==1 && $dlt_fanli1>0){
                                         $data5=array();
                                         $data5['fl_unitcode'] = session('unitcode');
                                         $data5['fl_dlid'] = $data4['dl_id']; //获得返利的代理
@@ -4173,8 +4176,6 @@ class OrdersController extends CommController {
                                                 $data5['fl_level']  = 2;  //返利的层次，1-第一层返利 2-第二层返利
                                                 $data5['fl_addtime']  = time();
                                                 $data5['fl_remark'] ='代理 '.$data4['dl_name'].'('.$data4['dl_username'].') 邀请代理 '.$orderdealer['dl_name'].'('.$orderdealer['dl_username'].') 成为 '.$dltinfo['dlt_name'];
-
-
                                                 $map5=array();
                                                 $map5['fl_unitcode'] = session('unitcode');
                                                 $map5['fl_dlid'] = $data6['dl_id'];
@@ -4791,14 +4792,195 @@ class OrdersController extends CommController {
 			 					}	
 			 				}
 			 			}
+//                        -----------------------区域服务费------------------------
+
+                          //1、直推人为工作室
+                        if($data4 && $data4['dl_level']==3){
+                            $regional1=1;
+                        }
+                          //2、间推人为工作室
+                        if($data6 &&$data6['dl_level']==3){
+                            $regional2=1;
+                        }
+                        //3该区域有体验店
+                        $_regional3=$Dealer->where(['dl_sz_sheng'=>$orderdealer['dl_sheng'],'dl_sz_shi'=>$orderdealer['dl_shi'],'dl_sz_qu'=>$orderdealer['dl_qu'],'dl_level'=>2])->find();
+                        if($_regional3){
+                            $regional3=1;
+                            $regional3_id=$_regional3['dl_id'];
+                        }
+                        //4、该区域有旗舰店
+                        $_regional4=$Dealer->where(['dl_sz_sheng'=>$orderdealer['dl_sheng'],'dl_sz_shi'=>$orderdealer['dl_shi'],'dl_sz_qu'=>$orderdealer['dl_qu'],'dl_level'=>1])->find();
+                        $_regional5=$Dealer->where(['dl_sz_sheng'=>$orderdealer['dl_sheng'],'dl_sz_shi'=>$orderdealer['dl_shi'],'dl_sz_qu'=>0,'dl_level'=>1])->find();
+                        if($_regional4){
+                            $regional4=1;
+                            $regional4_id= $_regional4['dl_id'];
+                        }
+                        if($_regional5){
+                            $regional5=1;
+                            $regional5_id= $_regional5['dl_id'];
+                        }
+
+
+                        //根据条件返利
+                        //1、直推人为工作室
+                        if($regional1==1){
+                            foreach($oddetail as $kk=>$vv) {
+                                $regional1sum = 1.2* $vv['oddt_qty'];
+                        //$shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
+
+                                $data5 = array();
+                                $data5['fl_unitcode'] = session('unitcode');
+                                $data5['fl_dlid'] = $fanli_dlid1; //获得返利的代理
+                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] =7; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                $data5['fl_money'] = $regional1sum;
+                          //$data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+                                $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                $rs5 = $Fanlidetail->create($data5, 1);
+                                if ($rs5) {
+                                    $Fanlidetail->add();
+                                }
+                            }
+                        }
+                        //2、间推人为工作室
+                        if($regional2==1){
+                            foreach($oddetail as $kk=>$vv) {
+                                $regional2sum = 1.2* $vv['oddt_qty'];
+//                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
+
+                                $data5 = array();
+                                $data5['fl_unitcode'] = session('unitcode');
+                                $data5['fl_dlid'] = $fanli_dlid2; //获得返利的代理
+                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] = 7; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利 21区域垫补)
+                                $data5['fl_money'] = $regional2sum;
+//                         $data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+                                $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                $rs5 = $Fanlidetail->create($data5, 1);
+                                if ($rs5) {
+                                    $Fanlidetail->add();
+                                }
+                            }
+                        }
+                        //3该区域有体验店
+                        if($regional3==1){
+                            foreach($oddetail as $kk=>$vv) {
+                                $regional3sum = 3.8* $vv['oddt_qty'];
+//                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
+
+                                $data5 = array();
+                                $data5['fl_unitcode'] = session('unitcode');
+                                $data5['fl_dlid'] = $regional3_id; //获得返利的代理
+                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] = 7; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                $data5['fl_money'] = $regional3sum;
+//                         $data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+//                         $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                $rs5 = $Fanlidetail->create($data5, 1);
+                                if ($rs5) {
+                                    $Fanlidetail->add();
+                                }
+                            }
+                        }
+                        //4、该区域有旗舰店
+                        if($regional4==1){
+                            foreach($oddetail as $kk=>$vv) {
+                                $regional4sum = 1* $vv['oddt_qty'];
+//                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
+
+                                $data5 = array();
+                                $data5['fl_unitcode'] = session('unitcode');
+                                $data5['fl_dlid'] = $regional4_id; //获得返利的代理
+                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] = 7; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                $data5['fl_money'] = $regional4sum;
+//                         $data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+//                         $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                $rs5 = $Fanlidetail->create($data5, 1);
+                                if ($rs5) {
+                                    $Fanlidetail->add();
+                                }
+                            }
+                        }
+                        //4、该区域有旗舰店
+                        if($regional5==1){
+                            foreach($oddetail as $kk=>$vv) {
+                                $regional5sum = 1* $vv['oddt_qty'];
+//                         $shouxufei = $pfl_fanli2sum * C('FANLI_SHOUXUFEI');
+
+                                $data5 = array();
+                                $data5['fl_unitcode'] = session('unitcode');
+                                $data5['fl_dlid'] = $regional5_id; //获得返利的代理
+                                $data5['fl_senddlid'] = 0; //发放返利的代理 0为公司发放
+                                $data5['fl_type'] = 7; //返利分类 1-推荐返利 2-订单返利  11-提现减少返利 (1-10 增加返利 11-20 减少返利)
+                                $data5['fl_money'] = $regional5sum;
+//                         $data5['fl_shouxufei'] = $shouxufei;
+                                $data5['fl_refedlid'] = 0; //推荐返利中被推荐的代理
+                                $data5['fl_oddlid'] = $orderdealer['dl_id']; //订单返利中 下单的代理
+                                $data5['fl_odid'] = $vv['oddt_odid'];  //订单返利中 订单流水id
+                                $data5['fl_orderid'] = $vv['oddt_orderid']; //订单返利中 订单id
+                                $data5['fl_proid'] = $vv['oddt_proid'];  //订单返利中 产品id
+                                $data5['fl_oddtid'] = $vv['oddt_id'];  //订单详细id
+                                $data5['fl_odblid'] = $vv['oddt_odblid'];  //订单返利中 订单关系id
+                                $data5['fl_qty'] = $vv['oddt_qty'];  //订单返利中 产品数量
+//                         $data5['fl_level'] = 2;  //返利的层次，1-第一层返利 2-第二层返利
+                                $data5['fl_addtime'] = time();
+                                $data5['fl_remark'] = '代理 ' . $orderdealer['dl_name'] . '(' . $orderdealer['dl_username'] . ') 订购 ' . $vv['oddt_proname'] . ' 数量 ' . $vv['oddt_qty'];
+                                $rs5 = $Fanlidetail->create($data5, 1);
+                                if ($rs5) {
+                                    $Fanlidetail->add();
+                                }
+                            }
+                        }
+                        //-----------------------区域服务费-------------------------
+
+
+
 				    }
 				}
 			 	//返利 end
-//                 区域服务费
-
-               //升级
-                 $Dltype=M('Dltype');
-                 $Dealer=M('Dealer');
+//
+               //--------------------------升级------------------------------
 			 	$dlt_type3= $Dltype->where(['dlt_level'=>3])->find();
                  $dlt_id3=$dlt_type3['dlt_id'];
 			 	$dlt_type4= $Dltype->where(['dlt_level'=>4])->find();
@@ -4817,25 +4999,25 @@ class OrdersController extends CommController {
                      }
                  }
 //                 代理商
-                 if($orderdealer['dl_level']==5 ){
-                     if($upgrade_num>=54&&$upgrade_num<90){
+                 if($orderdealer['dl_level']==5){
+                     if($upgrade_num>=54){
                          // 升到合伙人
                          $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>4,'dl_type'=>$dlt_id4]);
                      }
-                     if($upgrade_num>=90){
-                         // 升到工作室
-                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
-                     }
+//                     if($upgrade_num>=90){
+//                         // 升到工作室
+//                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+//                     }
 
                  }
 //                 合伙人
-                 if($orderdealer['dl_level']==4 ){
-                     if($upgrade_num>=90){
-                         // 升到工作室
-                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
-                     }
-
-                 }
+//                 if($orderdealer['dl_level']==4 ){
+//                     if($upgrade_num>=90){
+//                         // 升到工作室
+//                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+//                     }
+//
+//                 }
 //                 2、一次性进货升级
                  $upgrade2= $Orderdetail->where(['oddt_odid'=>$data['od_id']])->select();
                  $upgrade_num2=0;
@@ -4844,23 +5026,24 @@ class OrdersController extends CommController {
                  }
 //                 代理商
                  if($orderdealer['dl_level']==5){
-                     if($upgrade_num2>=36&&$upgrade_num2<=72){
+                     if($upgrade_num2>=36){
                          // 升到合伙人
                          $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>4,'dl_type'=>$dlt_id4]);
                      }
-                     if($upgrade_num2>=72){
-                         // 升到工作室
-                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
-                     }
+//                     if($upgrade_num2>=72){
+//                         // 升到工作室
+//                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+//                     }
                  }
-//                 合伙人
-                 if($orderdealer['dl_level']==4 ){
-                     if($upgrade_num>=72){
-                         // 升到工作室
-                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
-                     }
-
-                 }
+////                 合伙人
+//                 if($orderdealer['dl_level']==4 ){
+//                     if($upgrade_num>=72){
+//                         // 升到工作室
+//                         $Dealer->where(['dl_id'=>$orderdealer['dl_id']])->save(['dl_level'=>3,'dl_type'=>$dlt_id3]);
+//                     }
+//
+//                 }
+                 //--------------------------升级------------------------------
 			 	//订单操作日志 begin
 			 	$odlog_arr=array(
 			 				'odlg_unitcode'=>session('unitcode'),  
